@@ -17,6 +17,12 @@ const config: Config = {
       "green": "#C3E78C"
     },
     extend: {
+      fontFamily: {
+        "zodiak-italic": ["ZodiakItalic"],
+        "zodiak-light": ["ZodiakLight"],
+        "zodiak-light-italic": ["ZodiakLightItalic"],
+        "zodiak-regular": ["ZodiakRegular"],
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
