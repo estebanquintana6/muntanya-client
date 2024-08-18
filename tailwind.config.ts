@@ -22,6 +22,7 @@ const config: Config = {
         "zodiak-light": ["ZodiakLight"],
         "zodiak-light-italic": ["ZodiakLightItalic"],
         "zodiak-regular": ["ZodiakRegular"],
+        "zodiak-bold": ["ZodiakBold"],
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

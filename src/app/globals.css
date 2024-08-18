@@ -42,6 +42,17 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'ZodiakBold';
+  src: url('/fonts/Zodiak-Bold.woff2') format('woff2'),
+       url('/fonts/Zodiak-Bold.woff') format('woff'),
+       url('/fonts/Zodiak-Bold.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
+
 .bg-header {
   background: url(https://picsum.photos/1920/1920/?random) center center no-repeat;
   background-attachment: fixed;
