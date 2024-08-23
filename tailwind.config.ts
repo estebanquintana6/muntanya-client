@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import colors from "tailwindcss/colors";
 
 const config: Config = {
   content: [
@@ -8,13 +9,14 @@ const config: Config = {
   ],
   theme: {
     colors: {
+      ...colors,
       "primary": "#F3EDDC",
       "brown-100": "#482E1D",
       "brown-50": "#895D2B",
       "brown-25": "#A3966A",
       "brick": "#8D451C",
       "blue": "#7E9CF0",
-      "green": "#C3E78C"
+      "green": "#C3E78C",
     },
     extend: {
       fontFamily: {
