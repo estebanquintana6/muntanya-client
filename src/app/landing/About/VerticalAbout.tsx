@@ -2,7 +2,7 @@ export default function VerticalAbout() {
     return (
         <section className="flex">
             <div className="w-full h-screen overflow-hidden relative">
-                <video muted loop autoPlay={true} className="absolute min-h-full min-w-full object-cover left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -z-1">
+                <video muted loop playsInline autoPlay={true} className="absolute min-h-full min-w-full object-cover left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -z-1">
                     <source src="/videos/about.mov" type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
