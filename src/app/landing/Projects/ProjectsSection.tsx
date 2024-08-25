@@ -4,14 +4,14 @@ export default function ProjectsSection() {
       <div className="w-full text-center mb-4">
         <h1 className="text-5xl sm:text-6xl font-zodiak-bold">Our craft</h1>
       </div>
-      <div className="grid grid-flow-dense lg:grid-flow-row grid-cols-12 py-8 lg:pb-theme border-t-grid border-grid-color">
+      <div className="grid grid-flow-dense lg:grid-flow-row grid-cols-12 py-8 border-t-grid border-grid-color">
         <div className="col-span-6 lg:col-span-6 lg:flex mt-8 lg:mt-0 pl-4 lg:pl-8 justify-center">
           <img src="/photos/UAQ-1.jpg"></img>
         </div>
         <div className="col-span-6 lg:col-span-3 lg:flex mt-8 lg:mt-0 px-4 lg:px-8 justify-center">
           <img src="/photos/UAQ-2.jpg"></img>
         </div>
-        <div className="-order-1 lg:order-3 col-span-12 lg:col-span-3 text-primary-text relative pl-8 lg:flex flex-col justify-top">
+        <div className="-order-1 lg:order-3 col-span-12 lg:col-span-3 text-primary-text relative px-4 lg:flex flex-col justify-top">
           <div className="text-left break-words w-full">
             <h4 className="capitalize text-2xl pb-4 font-zodiak-bold text-brown-50">
               Making Space From Waste
@@ -34,11 +34,10 @@ export default function ProjectsSection() {
         <div className="lg:col-span-3 lg:flex pl-8 flex-col justify-center lg:border-r-8 border-brown-100">
           <div className="text-left break-words w-full">
             <h4 className="capitalize text-2xl pb-4 font-zodiak-bold text-brown-50">
-              Making Space From Waste
+              explora, aprende, protege
             </h4>
             <p className="pb-2 font-zodiak-regular">
-              We reclaim and recycle plastic waste from landfills, oceans and
-              rivers to craft elevated design objects and spaces.
+              Aquí debe de ir una breve explicación de lo que trata este proyecto,
             </p>
             <div className="text-0">
               <a
@@ -46,7 +45,7 @@ export default function ProjectsSection() {
                 href="https://spaceavailable.tv/pages/studio"
               >
                 <span className="inline-flex font-zodiak-italic text-blue">
-                  Learn More
+                  Aprende más
                 </span>
               </a>
             </div>
