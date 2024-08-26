@@ -30,6 +30,9 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "blog-default-1": "url('/photos/BLOG-1.jpg')",
+        "blog-default-2": "url('/photos/BLOG-2.jpg')",
+        "blog-default-3": "url('/photos/BLOG-3.jpg')",
       },
     },
   },
