@@ -21,7 +21,7 @@ export default function BlogSection() {
         </div>
       <div className="container font-zodiak-regular mx-auto">
         <div className="grid h-full grid-cols-12 gap-10 pb-10 mt-8 sm:mt-16">
-          <div className="relative flex flex-col items-start justify-end h-full col-span-12 overflow-hidden rounded-xl group md:col-span-6 xl:col-span-4 bg-blog-default-1 bg-cover">
+          <div className="relative flex flex-col items-start justify-end h-full col-span-9 overflow-hidden rounded-xl group md:col-span-6 xl:col-span-4 bg-blog-default-1 bg-cover">
             <div className="absolute w-full h-full bg-black top-0 left-0 bg-opacity-50"></div>
             <a
               href="#_"
@@ -43,7 +43,7 @@ export default function BlogSection() {
               </p>
             </div>
           </div>
-          <div className="relative flex flex-col items-start justify-end h-full col-span-12 overflow-hidden rounded-xl group md:col-span-6 xl:col-span-4 bg-blog-default-2 bg-cover">
+          <div className="relative flex flex-col items-start justify-end h-full col-span-9 overflow-hidden rounded-xl group md:col-span-6 xl:col-span-4 bg-blog-default-2 bg-cover">
             <div className="absolute w-full h-full bg-black top-0 left-0 bg-opacity-50"></div>
             <a
               href="#_"
@@ -66,7 +66,7 @@ export default function BlogSection() {
             </div>
           </div>
 
-          <div className="relative flex flex-col items-start justify-end h-full col-span-12 overflow-hidden rounded-xl group sm:col-span-12 xl:col-span-4 sm:flex-row xl:flex-col bg-blog-default-3 bg-cover">
+          <div className="relative flex flex-col items-start justify-end h-full col-span-9 overflow-hidden rounded-xl group sm:col-span-12 xl:col-span-4 sm:flex-row xl:flex-col bg-blog-default-3 bg-cover">
             <div className="absolute w-full h-full bg-black top-0 left-0 bg-opacity-50"></div>
             <a
               href="#_"
