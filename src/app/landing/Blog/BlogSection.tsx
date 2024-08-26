@@ -8,7 +8,7 @@ export default function BlogSection() {
       <div className="text-6xl text-center font-zodiak-bold mb-10 text-white">
         Blog
       </div>
-      <div className="lg:col-span-3 lg:flex pl-8 flex-col ml-auto justify-center border-l-8 border-brown-100 text-primary w-1/3">
+      <div className="flex pl-8 flex-col lg:ml-auto justify-center border-l-8 border-brown-100 text-primary lg:w-1/3">
           <div className="text-left break-words w-full justify-center my-auto">
             <h4 className="text-2xl pb-4 font-zodiak-bold">
               Encuentra un mundo de contenidos
