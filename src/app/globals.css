@@ -52,7 +52,6 @@
   font-style: normal;
 }
 
-
 .bg-header {
   background: url(https://picsum.photos/1920/1920/?random) center center no-repeat;
   background-attachment: fixed;
@@ -61,4 +60,86 @@
 .bg-quote {
   background: url(https://picsum.photos/1600/1600/?random) center center no-repeat;
   background-attachment: fixed;
+}
+
+.menu{
+  margin: 0;
+  display: flex;
+  /* Works well with 100% width  */
+  width: 12em;
+  font-size: 1.5em;
+  padding: 0 0.85em;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu__item{
+  all: unset;
+  flex-grow: 1;
+  z-index: 100;
+  display: flex;
+  cursor: pointer;
+  position: relative;
+  border-radius: 50%;
+  align-items: center;
+  will-change: transform;
+  justify-content: center;
+  padding: 0.5em;
+  transition: transform var(--timeOut , var(--duration));
+}
+
+.menu__item::before{
+  content: "";
+  z-index: -1;
+  border-radius: 50%;
+  position: absolute;
+  transform: scale(0);
+}
+
+.menu__item.home {
+  transform: translate3d(0, -.8em , 0);
+}
+
+.menu__item.home::before{
+  transform: scale(1);
+  background-color: #A3966A;
+}
+
+.icon{
+  width: 2.6em;
+  height: 2.6em;
+  stroke: white;
+  fill: transparent;
+  stroke-width: 1pt;
+  stroke-miterlimit: 10;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 400; 
+}
+
+.menu__item.active .icon {
+  animation: strok 1.5s reverse;
+}
+
+@keyframes strok {
+  100% {
+      stroke-dashoffset: 400;
+  }
+}
+
+.menu__border{
+  left: 0;
+  bottom: 99%;
+  width: 10.9em;
+  height: 2.4em;
+  position: absolute;
+  clip-path: url(#menu);
+  will-change: transform;
+  background-color: var(--bgColorMenu);
+}
+
+.svg-container {
+  width: 0;
+  height: 0;
 }

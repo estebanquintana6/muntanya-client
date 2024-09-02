@@ -9,10 +9,10 @@ export default function ProjectsSection() {
         <h1 className="text-5xl sm:text-6xl font-zodiak-bold">Our craft</h1>
       </div>
       <div className="grid grid-flow-dense lg:grid-flow-row grid-cols-12 py-8 border-t-grid border-grid-color">
-        <div className="col-span-6 lg:col-span-6 lg:flex mt-8 lg:mt-0 pl-4 lg:pl-8 justify-center">
+        <div className="col-span-12 lg:col-span-6 lg:flex mt-8 lg:mt-0 px-4 lg:pl-8 justify-center">
           <img src="/photos/UAQ-1.jpg"></img>
         </div>
-        <div className="col-span-6 lg:col-span-3 lg:flex mt-8 lg:mt-0 px-4 lg:px-8 justify-center">
+        <div className="hidden lg:col-span-3 lg:flex mt-8 lg:mt-0 px-4 lg:px-8 justify-center">
           <img src="/photos/UAQ-2.jpg"></img>
         </div>
         <div className="-order-1 lg:order-3 col-span-12 lg:col-span-3 text-primary-text relative px-4 lg:flex flex-col justify-top">
@@ -65,7 +65,7 @@ export default function ProjectsSection() {
         </div>
       </div>
       <div className="flex justify-center text-center">
-        <LandingPageButton title="Ver más proyectos" />
+        <LandingPageButton title="Ver más proyectos" href="/proyectos" />
       </div>
     </section>
   );
