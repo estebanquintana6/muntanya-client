@@ -1,13 +1,10 @@
 "use client";
 
-import { useState } from "react";
+export default function Navbar() {
 
-interface OwnProps {
-  selected: string;
-}
-
-export default function Navbar({ selected }: OwnProps) {
-  const [currentlySelected, setCurrentlySelected] = useState(selected);
+  const onHomeClick = () => {
+    
+  }
 
   return (
     <div className="w-full flex top-[90%] justify-center fixed">
