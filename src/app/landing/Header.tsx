@@ -2,16 +2,15 @@
 
 export default function Header() {
     return (
-        <div className="w-full h-screen bg-brown-100 flex px-6 sm:px-0">
+        <div className="w-full h-screen bg-primary flex px-6 sm:px-0">
             <div className="m-auto">
-                <div className="block sm:relative">
-                    <h1 className="text-8xl sm:text-9xl text-primary font-zodiak-light">
-                        MUN TA NYA <br/>LAB
+                <div className="flex flex-col sm:relative">
+                    <h1 className="text-6xl sm:text-9xl text-brown-100 font-zodiak-light text-center">
+                        ESTUDIO <br /> DE DISEÑO <br /> CIRCULAR
                     </h1>
-                    <div className="flex mt-5 sm:mt-0 sm:absolute sm:top-1/2 sm:left-1/2 sm:w-[40vh]">
-                        <span className="table-caption text-sm text-primary w-14 h-24">Estudio de diseño circular</span>
-                        <span className="text-sm text-primary ml-auto">est. 2024</span>
-                    </div>
+                    <h3 className="text-lg sm:text-xl text-brown-100 font-zodiak-regular text-center mt-5">
+                        EL PLANETA ESTÁ CAMBIANDO. EL DISEÑO DEBE CAMBIAR
+                    </h3>
                 </div>
             </div>
         </div>
