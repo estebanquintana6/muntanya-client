@@ -88,6 +88,7 @@ export default function Header() {
       ref={headerRef}
       className="w-full relative h-screen bg-primary flex px-6 sm:px-0 dvd-box overflow-hidden"
     >
+      {/* @ts-expect-error */}
       { IMAGES.map((url, i) => <img key={url} src={url} className="h-20" ref={(r) => imgRefs.current[i] = r}/>)
       }
       <div className="m-auto">
