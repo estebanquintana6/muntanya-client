@@ -6,16 +6,17 @@ export default function VerticalAbout() {
                     <source src="/videos/about.mov" type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
-                <div className="bg-black bg-opacity-60 backdrop-blur-sm h-full w-full sm:w-1/2 flex flex-col">
-                    <div className="mt-auto mx-auto flex">
-                        <h1 className="text-6xl font-zodiak-bold text-primary">Muntanya</h1>
-                    </div>
-                    <div className="flex w-full mb-auto mt-8 p-8 sm:p-0">
-                        <div className="w-1/2 sm:w-52 ml-auto mr-4">
-                            <h2 className="text-2xl sm:text-3xl text-primary ">Un estudio independiente de diseño</h2>
+                <div className="bg-black bg-opacity-50 backdrop-blur-sm h-full w-full flex flex-col">
+                    <div className="flex flex-col sm:flex-row w-full mb-auto p-8 sm:p-0 my-auto">
+                        <div className="w-full border-b-4 pb-4 ml-auto sm:pb-0 sm:w-1/3 sm:mr-4 sm:border-b-0">
+                            <h1 className="text-5xl sm:text-6xl font-zodiak-bold text-primary text-center align-middle">¿QUIÉNES SOMOS?</h1>
                         </div>
-                        <div className="h-full border-l-4 border-primary" />
-                        <h3 className="w-1/2 text-md sm:text-xl text-primary ml-4 mr-auto">Somos un estudio que hace x y z</h3>
+                        <div className="h-full hidden sm:block border-l-4 border-primary" />
+                        <h3 className="w-full text-xl sm:text-2xl text-md text-primary font-zodiak-regular mt-6 ml-4 mr-auto sm:w-1/2 sm:mt-0">
+                            Somos un estudio de diseño circular en México, comprometido con transformar residuos orgánicos industriales en biomateriales innovadores
+                            y biodegradables. Inspirados en ciclos naturales. Creamos produtos radicales que impulsan sistemas industriales más sostenibles, eliminando
+                            la necesidad de extraer materias primas virgenes y reintegrando los desechos en un ciclo natural.
+                        </h3>
                     </div>
                 </div>
             </div>
