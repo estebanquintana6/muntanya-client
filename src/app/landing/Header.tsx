@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 
 const IMAGES = [
@@ -14,61 +14,40 @@ const IMAGES = [
 
 export default function Header() {
   const headerRef = useRef<HTMLDivElement>(null);
-  const imgRefs = useRef<HTMLImageElement[]>([]);
+  const imgRef = useRef<HTMLImageElement>([]);
+  const [imgSrc, setImgSrc] = useState("/animation/animacion-avena.png");
 
   let x_icon = 0;
   let y_icon = 0;
-  let stepX = 0.3;
-  let stepY = 0.3;
+  let stepX = 1;
+  let stepY = 1;
   
-
   const draw = () => {
-    const images = imgRefs.current;
-
-    for (let i = 0; i < images.length; i++) {
-        const img = images[i];
-        img.onload = function () {
-            setInterval(() => myAnimation(i), 10);
-        };
-        if (i !== 0) {
-            img.style.visibility = 'hidden';
-        }
-        img.style.position = 'absolute';
-        img.src = IMAGES[i];
-    }
+    setInterval(() => myAnimation(), 10);
   };
 
-  const myAnimation = (index: number) => {
-    let img = imgRefs.current[index];
-    let bounced = false;
-    
+  const myAnimation = () => {    
       if (
         x_icon < 0 ||
-        x_icon > (headerRef.current?.offsetHeight ?? 0) - img.offsetHeight
+        x_icon > (headerRef.current?.offsetHeight ?? 0) - imgRef.current.offsetHeight
       ) {
         stepX = -stepX;
-        bounced = true;
+        setImgSrc(IMAGES[Math.floor(Math.random()*IMAGES.length)]);
       }
 
       if (
         y_icon < 0 ||
-        y_icon > (headerRef.current?.offsetWidth ?? 0) - img.offsetWidth
+        y_icon > (headerRef.current?.offsetWidth ?? 0) - imgRef.current.offsetWidth
       ) {
         stepY = -stepY;
-        bounced = true;
+        setImgSrc(IMAGES[Math.floor(Math.random()*IMAGES.length)]);
       }
       
       x_icon += stepX;
       y_icon += stepY;
 
-      img.style.top = x_icon + "px";
-      img.style.left = y_icon + "px";
-      
-      if (bounced && img.style.visibility !== 'hidden') {
-        bounced = false;
-        img.style.visibility = "hidden";
-        imgRefs.current[(index + 1) % IMAGES.length].style.visibility = "visible";
-      }
+      imgRef.current.style.top = x_icon + "px";
+      imgRef.current.style.left = y_icon + "px";
   };
 
   useEffect(() => {
@@ -81,9 +60,7 @@ export default function Header() {
       ref={headerRef}
       className="w-full relative h-screen bg-primary flex px-6 sm:px-0 dvd-box overflow-hidden"
     >
-      {/* @ts-expect-error */}
-      { IMAGES.map((url, i) => <img key={url} id={`ball-${i}`} src={url} className="w-32 sm:w-52" ref={(r) => imgRefs.current[i] = r}/>)
-      }
+      <img key={imgSrc} id='ball' src={imgSrc} className="w-32 absolute sm:w-52" ref={imgRef}/>
       <div className="m-auto">
         <div className="flex flex-col sm:relative">
           <h1 className="text-5xl sm:text-9xl text-brown-100 font-zodiak-light text-center">
