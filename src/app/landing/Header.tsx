@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 
 const IMAGES = [
@@ -35,23 +35,19 @@ export default function Header() {
         }
         img.style.position = 'absolute';
         img.src = IMAGES[i];
-        img.style.width = "6rem";
     }
   };
 
   const myAnimation = (index: number) => {
     let img = imgRefs.current[index];
     let bounced = false;
-    let isCurrentlyDisplaying = img.style.visibility !== 'hidden';
     
       if (
         x_icon < 0 ||
         x_icon > (headerRef.current?.offsetHeight ?? 0) - img.offsetHeight
       ) {
         stepX = -stepX;
-        if (isCurrentlyDisplaying) {
-            bounced = true;
-        }
+        bounced = true;
       }
 
       if (
@@ -59,9 +55,7 @@ export default function Header() {
         y_icon > (headerRef.current?.offsetWidth ?? 0) - img.offsetWidth
       ) {
         stepY = -stepY;
-        if (isCurrentlyDisplaying) {
-            bounced = true;
-        }
+        bounced = true;
       }
       
       x_icon += stepX;
@@ -70,8 +64,7 @@ export default function Header() {
       img.style.top = x_icon + "px";
       img.style.left = y_icon + "px";
       
-      if (bounced) {
-        console.log("BOUNCED");
+      if (bounced && img.style.visibility !== 'hidden') {
         bounced = false;
         img.style.visibility = "hidden";
         imgRefs.current[(index + 1) % IMAGES.length].style.visibility = "visible";
@@ -89,14 +82,14 @@ export default function Header() {
       className="w-full relative h-screen bg-primary flex px-6 sm:px-0 dvd-box overflow-hidden"
     >
       {/* @ts-expect-error */}
-      { IMAGES.map((url, i) => <img key={url} src={url} className="h-20" ref={(r) => imgRefs.current[i] = r}/>)
+      { IMAGES.map((url, i) => <img key={url} id={`ball-${i}`} src={url} className="w-32 sm:w-52" ref={(r) => imgRefs.current[i] = r}/>)
       }
       <div className="m-auto">
         <div className="flex flex-col sm:relative">
-          <h1 className="text-6xl sm:text-9xl text-brown-100 font-zodiak-light text-center">
+          <h1 className="text-5xl sm:text-9xl text-brown-100 font-zodiak-light text-center">
             ESTUDIO <br /> DE DISEÑO <br /> CIRCULAR
           </h1>
-          <h3 className="text-lg sm:text-xl text-brown-100 font-zodiak-regular text-center mt-5">
+          <h3 className="text-md sm:text-xl text-brown-100 font-zodiak-regular text-center mt-5">
             EL PLANETA ESTÁ CAMBIANDO. EL DISEÑO DEBE CAMBIAR
           </h3>
         </div>

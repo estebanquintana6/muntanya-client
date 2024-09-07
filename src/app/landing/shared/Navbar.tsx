@@ -4,7 +4,7 @@ export default function Navbar() {
   const onHomeClick = () => {};
 
   return (
-    <div className="w-full flex top-0 justify-center fixed z-10">
+    <div className="w-full flex top-0 justify-center fixed z-50">
       <nav className="w-full bg-primary">
         <div className="flex flex-wrap items-center justify-between mx-auto p-4">
           <a
