@@ -21,10 +21,6 @@ export default function Header() {
   let y_icon = 0;
   let stepX = 1;
   let stepY = 1;
-  
-  const draw = () => {
-    setInterval(() => myAnimation(), 10);
-  };
 
   const myAnimation = () => {    
       if (
@@ -51,7 +47,7 @@ export default function Header() {
   };
 
   useEffect(() => {
-    draw();
+    setInterval(() => myAnimation(), 10);
   }, []);
 
 
