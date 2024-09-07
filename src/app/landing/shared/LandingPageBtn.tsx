@@ -34,9 +34,9 @@ export default function LandingPageButton({ title, href = "#" }: OwnProps) {
           <g
             fill="none"
             fill-rule="evenodd"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
           >
             <path d="M1 7h16M11 1l6 6-6 6"></path>
           </g>
