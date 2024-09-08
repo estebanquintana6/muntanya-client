@@ -12,7 +12,6 @@ export async function decrypt(input: string): Promise<any> {
 }
 
 export async function login(username: string, password: string) {
-  console.log(process.env.SERVER_URL);
   const { data } = await axios.post(`${process.env.SERVER_URL}/users/login`, {
     username,
     password,
