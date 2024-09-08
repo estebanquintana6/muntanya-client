@@ -65,7 +65,16 @@ export default function ProjectsSection() {
                   src="/photos/wrap.jpg"
                   className="absolute h-full hover:ease-in-out rounded-md transition duration-700 hover:opacity-0 top-0 hidden md:block"
                 />
-                <img src="/photos/FORAS-1.jpg" className="h-full rounded-md" />
+                <img src="/photos/FORAS-1.jpg" className="rounded-md" />
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="relative cursor-pointer rounded-md h-full">
+                <img
+                  src="/photos/wrap.jpg"
+                  className="absolute h-full hover:ease-in-out rounded-md transition duration-700 hover:opacity-0 top-0 hidden md:block"
+                />
+                <img src="/photos/FORAS-2.jpg" className="rounded-md" />
               </div>
             </SwiperSlide>
             <SwiperSlide>
@@ -74,16 +83,7 @@ export default function ProjectsSection() {
                   src="/photos/wrap.jpg"
                   className="absolute h-full hover:ease-in-out rounded-md transition duration-700 hover:opacity-0 top-0 hidden md:block"
                 />
-                <img src="/photos/FORAS-2.jpg" className="h-full rounded-md" />
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="relative cursor-pointer rounded-md">
-                <img
-                  src="/photos/wrap.jpg"
-                  className="absolute h-full hover:ease-in-out rounded-md transition duration-700 hover:opacity-0 top-0 hidden md:block"
-                />
-                <img src="/photos/FORAS-4.jpg" className="h-full rounded-md" />
+                <img src="/photos/FORAS-4.jpg" className="rounded-md" />
               </div>
             </SwiperSlide>
           </Swiper>
