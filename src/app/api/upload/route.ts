@@ -1,6 +1,8 @@
-import { put } from '@vercel/blob'
+import { put, del } from '@vercel/blob'
 import { NextResponse } from 'next/server'
 import { customAlphabet } from 'nanoid'
+import axios from "axios";
+import { cookies } from "next/headers";
 
 export const runtime = 'edge'
 
@@ -9,14 +11,43 @@ const nanoid = customAlphabet(
   7
 ) // 7-character random string
 export async function POST(req: Request) {
-  const file = req.body || '';
-  console.log(file);
-  const contentType = req.headers.get('content-type') || 'text/plain';
-  const filename = `${nanoid()}.${contentType.split('/')[1]}`;
-  const blob = await put(filename, file, {
-    contentType,
-    access: 'public',
-  });
+  const form = await req.formData();
 
-  return NextResponse.json(blob);
+  const files = form.getAll('photos') as File[];
+  const title = form.get('title');
+  const description = form.get('description');
+
+  const photo_urls = [];
+
+  try {
+    for (const file of files) {
+      const contentType = file.type;
+      const filename = `${nanoid()}.${contentType.split('/')[1]}`;
+      const blob = await put(filename, file, {
+        contentType,
+        access: 'public',
+      });
+      photo_urls.push(blob.url);
+    }
+
+    const { data } = await axios({
+      url: `${process.env.SERVER_URL}/products/create`,
+      method: "POST",
+      headers: {
+        Authorization: cookies().get("session")?.value,
+        "Content-Type": "application/json"
+      },
+      data: {     
+        title,
+        description,
+        photo_urls
+      }
+    });
+
+    return NextResponse.json(data);
+
+  } catch (e) {
+    del(photo_urls);
+    return NextResponse.error();
+  }
 }

@@ -1,13 +1,22 @@
 "use client";
 
-export default function ProjectGalleryItem() {
+import { Product } from "@/app/utils/interfaces/product";
+
+interface OwnProps {
+  product: Product;
+}
+
+export default function ProjectGalleryItem({ product } : OwnProps) {
+
+    const { title, photo_urls } = product;
+
     return (
         <div className="relative flex w-full">
-          <a href="#" className="w-full">
-            <img className="h-full w-full rounded-lg object-contain" src={"/photos/UAQ-1.jpg"} alt="" />
+          <a href="#" className="w-full h-64">
+            <img className="h-full w-full rounded-lg object-contain" src={photo_urls[0]} alt="" />
             <div className="absolute rounded-lg top-0 flex w-full h-full bg-slate-600 bg-opacity-50">
               <span className="m-auto text-center inline-block xs:text-md xl:text-2xl text-white sm:text-3xl">
-                Ejemplo
+                { title }
               </span>
             </div>
           </a>
