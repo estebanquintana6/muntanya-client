@@ -33,7 +33,7 @@ export default function LandingPageButton({ title, href = "#" }: OwnProps) {
         >
           <g
             fill="none"
-            fill-rule="evenodd"
+            fillRule="evenodd"
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth="2"
