@@ -1,15 +1,26 @@
 import ProjectDashboard from "./Dashboard";
 
-import { getProducts } from "@/app/libs/projects";
 import { Product } from "@/app/utils/interfaces/product";
+
+import { getProducts, deleteProduct } from "@/app/libs/projects";
 
 export default async function ProjectsPanel() {
 
   const products : Product[] = await getProducts();
+
+  const handleDeleteProject = async (id: string) => {
+    "use server";
+    await deleteProduct(id);
+  }
+
+  const fetchProducts = async () => {
+    "use server";
+    return await getProducts();
+  }
   
   return (
     <div>
-      <ProjectDashboard products={products} />
+      <ProjectDashboard fetchProducts={fetchProducts} onDelete={handleDeleteProject} />
     </div>
   );
 }

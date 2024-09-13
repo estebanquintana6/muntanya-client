@@ -1,14 +1,29 @@
 "use client";
 
 import { Product } from "@/app/utils/interfaces/product";
+import { deleteWarningModal } from "@/app/utils/alerts";
 
 interface OwnProps {
   product: Product;
+  onDelete: (id: string) => Promise<void>;
+  refreshProducts: () => Promise<void>;
 }
 
-export default function ProjectGalleryItem({ product } : OwnProps) {
-
+export default function ProjectGalleryItem({ product, onDelete, refreshProducts } : OwnProps) {
     const { title, photo_urls } = product;
+
+    const confirmDelete = async () => {
+      const { _id } = product;
+      await onDelete(_id);
+    }
+
+    const handleDelete = async () => {
+      deleteWarningModal({ 
+        title, 
+        confirmCb: confirmDelete, 
+        finallyCb: refreshProducts,
+      });
+    }
 
     return (
         <div className="relative flex w-full">
@@ -94,6 +109,7 @@ export default function ProjectGalleryItem({ product } : OwnProps) {
             <button
               className="mr-auto ml-2 w-12 h-12 bg-red-600 mt-2 rounded-lg"
               color="failure"
+              onClick={handleDelete}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

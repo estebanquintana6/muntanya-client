@@ -1,6 +1,7 @@
 export interface Product {
-    title: String,
-    description: String,
-    photo_urls: String,
-    created_at: String,
+    _id: string;
+    title: string,
+    description: string,
+    photo_urls: string[],
+    created_at: string,
 }
