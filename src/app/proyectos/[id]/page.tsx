@@ -1,11 +1,29 @@
-export default async function ProjectPage() {
+import { notFound } from 'next/navigation';
+
+import Navbar from '@/app/landing/shared/Navbar';
+import ProductView from './ProductView';
+
+import { getProductById } from "@/app/libs/projects";
+
+interface OwnProps {
+  params: {
+    id: string;
+  };
+}
+
+export default async function ProjectPage({ params } : OwnProps) {
+  const { id } = params;
+
+  const product = await getProductById(id);
+
+  if (!product) {
+    notFound();
+  }
+
   return (
-    <main className="flex flex-col min-h-screen bg-brown-100 pt-12">
-      <div className="py-10 sm:py-20 mx-auto">
-        <h1 className="text-6xl smd:text-7xl lg:text-8xl font-zodiak-bold text-primary">
-          Producto
-        </h1>
-      </div>
+    <main className="flex flex-col min-h-screen bg-primary pt-12">
+      <Navbar />
+      <ProductView product={product} />
     </main>
   );
 }
