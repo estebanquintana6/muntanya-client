@@ -4,16 +4,16 @@ import LandingPageButton from "../shared/LandingPageBtn";
 
 export default function BlogSection() {
   return (
-    <section className="min-h-screen bg-brown-50 py-12 px-9 flex flex-col">
-      <div className="text-6xl text-center font-zodiak-bold mb-10 text-white">
+    <section className="min-h-screen bg-brown-100 py-12 px-9 flex flex-col">
+      <div className="text-6xl text-center font-zodiak-bold mb-10 text-green">
         Blog
       </div>
-      <div className="flex pl-8 flex-col lg:ml-auto justify-center border-l-8 border-brown-100 text-primary lg:w-1/3">
+      <div className="flex pl-8 flex-col lg:ml-auto justify-center border-l-8 border-primary text-primary lg:w-1/3">
           <div className="text-left break-words w-full justify-center my-auto">
-            <h4 className="text-2xl pb-4 font-zodiak-bold">
+            <h4 className="text-2xl pb-4 font-zodiak-bold text-green">
               Encuentra un mundo de contenidos
             </h4>
-            <p className="pb-2 font-zodiak-regular">
+            <p className="pb-2 font-zodiak-regular text-green">
               Aquí debe de ir una breve explicación de lo que trata este
               blog,
             </p>
