@@ -10,7 +10,7 @@ interface OwnProps {
 
 export default function ProjectGallery({ products } : OwnProps) {
   return (
-    <div className="p-6 sm:p-12 mt-6 w-full">
+    <div className="p-6 mt-6 w-full">
       <Gallery products={products} />
     </div>
   );

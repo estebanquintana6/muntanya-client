@@ -1,22 +1,23 @@
+"use client";
+
+import GalleryItem from "./GalleryItem";
 import { Product } from "../utils/interfaces/product";
 
 interface OwnProps {
-    products: Product[];
+  products: Product[];
 }
 
-export default function Gallery({ products } : OwnProps) {
-    return (
-        <section className="flex w-full flex-col">
-            <div className="grid grid-cols-2 gap-x-[20vw] mx-auto">
-            {products.map(({ _id, title, photo_urls}) => (
-                <article className="col-span-1 w-[20vw]" key={_id}>
-                    <img src={photo_urls[0]} className="w-full" />
-                    <div className="mt-4">
-                        <h1 className="text-3xl font-zodiak-bold">{title}</h1>
-                    </div>
-                </article>
-            ))}
-            </div>
-        </section>
-    )
+export default function Gallery({ products }: OwnProps) {
+  return (
+    <section className="flex relative w-full flex-col">
+      <div className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+        <img src="/split.svg" className="w-6 hidden sm:block" />
+      </div>
+      <div className="grid grid-col-1 sm:grid-cols-2 gap-x-[10vw] sm:gap-x-[20vw] gap-y-20 sm:gap-y-40 sm:mx-auto">
+        {products.map((product) => (
+          <GalleryItem product={product} key={product._id} />
+        ))}
+      </div>
+    </section>
+  );
 }

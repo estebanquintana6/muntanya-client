@@ -3,5 +3,6 @@ export interface Product {
     title: string,
     description: string,
     photo_urls: string[],
+    tags: string[],
     created_at: string,
 }
