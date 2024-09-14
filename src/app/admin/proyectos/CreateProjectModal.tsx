@@ -108,7 +108,10 @@ export default function CreateProjectModal({
         </div>
         {data.length > 0 &&
           data.map((url) => (
-            <div className="group relative cursor-auto mt-2 flex h-60 flex-col items-center justify-center rounded-md border border-gray-300 bg-white shadow-sm transition-all hover:bg-gray-50">
+            <div
+              className="group relative cursor-auto mt-2 flex h-60 flex-col items-center justify-center rounded-md border border-gray-300 bg-white shadow-sm transition-all hover:bg-gray-50"
+              key={url}
+            >
               <img
                 src={url}
                 alt="Preview"
