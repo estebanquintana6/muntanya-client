@@ -1,17 +1,25 @@
 "use client";
 import { useState, useCallback, ChangeEvent } from "react";
 import toast from "react-hot-toast";
+import { TagsInput } from "react-tag-input-component";
 
 import Modal from "@/app/common/Modal";
 
+import { successModal, errorModal } from "@/app/utils/alerts";
+
 interface OwnProps {
   onClose: () => void;
+  refreshProducts: () => Promise<void>;
 }
 
-export default function CreateProjectModal({ onClose }: OwnProps) {
+export default function CreateProjectModal({
+  onClose,
+  refreshProducts,
+}: OwnProps) {
   const [data, setData] = useState<string[]>([]);
   const [files, setFiles] = useState<File[] | null>(null);
   const [title, setTitle] = useState("");
+  const [tags, setTags] = useState<string[]>([]);
   const [description, setDescription] = useState("");
 
   const onChangePicture = useCallback(
@@ -39,32 +47,35 @@ export default function CreateProjectModal({ onClose }: OwnProps) {
     [setData],
   );
 
-  const onSave = async (e) => {
-    e.preventDefault();
-
+  const onSave = async () => {
     const formData = new FormData();
 
     files?.forEach((file) => {
-        formData.append('photos', file); // 'file${index}' is the field name for each file
+      formData.append("photos", file); // 'file${index}' is the field name for each file
     });
 
     formData.append("title", title);
     formData.append("description", description);
+    formData.append("tags", JSON.stringify(tags));
 
     try {
-        const res = await fetch('/api/upload', {
-            method: 'POST',
-            body: formData,
-        });
-        if (res) {
-            toast.success("Producto creado");
-        }
-    } catch(e) {
-        toast.error("Hubo un error al crear el producto");
+      const res = await fetch("/api/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      console.log(res);
+
+      if (res) {
+        successModal("El producto se ha creado");
+        await refreshProducts();
+      }
+    } catch (e) {
+      errorModal("El producto no se pudo crear");
     } finally {
-        onClose();
+      onClose();
     }
-  }
+  };
 
   return (
     <Modal title={"Crear nuevo producto"} onClose={onClose}>
@@ -105,82 +116,66 @@ export default function CreateProjectModal({ onClose }: OwnProps) {
               />
             </div>
           ))}
-
-        <div className="grid gap-4 mb-4 grid-cols-2 mt-4">
-          <div className="col-span-2">
-            <label
-              htmlFor="name"
-              className="block mb-2 text-sm font-medium text-gray-900"
-            >
-              Nombre
-            </label>
-            <input
-              type="text"
-              name="name"
-              id="name"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-              placeholder="Escribe el nombre del producto"
-              required={true}
-            />
-          </div>
-          <div className="col-span-2 sm:col-span-1">
-            <label
-              htmlFor="price"
-              className="block mb-2 text-sm font-medium text-gray-900"
-            >
-              Precio
-            </label>
-            <input
-              type="number"
-              name="price"
-              id="price"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-              placeholder="$2999"
-              required={true}
-            />
-          </div>
-          <div className="col-span-2 sm:col-span-1">
-            <label
-              htmlFor="category"
-              className="block mb-2 text-sm font-medium text-gray-900"
-            >
-              Categoría
-            </label>
-            <select
-              id="category"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5"
-            >
-              <option>Selecciona una categoría</option>
-              <option value="TV">TV/Monitors</option>
-              <option value="PC">PC</option>
-              <option value="GA">Gaming/Console</option>
-              <option value="PH">Phones</option>
-            </select>
-          </div>
-          <div className="col-span-2">
-            <label
-              htmlFor="description"
-              className="block mb-2 text-sm font-medium text-gray-900"
-            >
-              Descripción de producto
-            </label>
-            <textarea
-              id="description"
-              rows={4}
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-              placeholder="Escribe la descripción del producto"
-            ></textarea>
-          </div>
+        <div className="w-full mt-4">
+          <label
+            htmlFor="name"
+            className="block mb-2 text-sm font-medium text-gray-900"
+          >
+            Nombre
+          </label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+            placeholder="Escribe el nombre del producto"
+            required={true}
+          />
         </div>
-        <div className="flex">
+        <div className="w-full mt-4">
+          <label
+            htmlFor="category"
+            className="block mb-2 text-sm font-medium text-gray-900"
+          >
+            Tags
+          </label>
+          <TagsInput
+            value={tags}
+            onChange={setTags}
+            name="tags"
+            classNames={{
+              input:
+                "block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500",
+            }}
+            placeHolder="Introduce los tags"
+          />
+        </div>
+        <div className="w-full mt-4">
+          <label
+            htmlFor="description"
+            className="block mb-2 text-sm font-medium text-gray-900"
+          >
+            Descripción de producto
+          </label>
+          <textarea
+            id="description"
+            rows={4}
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+            placeholder="Escribe la descripción del producto"
+          ></textarea>
+        </div>
+        <div className="flex mt-4">
           <button
             type="submit"
             className="text-black mx-auto inline-flex border-brown-100 border-2 items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-            onClick={onSave}
+            onClick={(e) => {
+              e.preventDefault();
+              onSave();
+            }}
           >
             <svg
               className="me-1 -ms-1 w-5 h-5"

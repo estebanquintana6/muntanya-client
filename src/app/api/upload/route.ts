@@ -16,6 +16,7 @@ export async function POST(req: Request) {
   const files = form.getAll('photos') as File[];
   const title = form.get('title');
   const description = form.get('description');
+  const tags = form.get('tags');
 
   const photo_urls = [];
 
@@ -40,7 +41,8 @@ export async function POST(req: Request) {
       data: {     
         title,
         description,
-        photo_urls
+        photo_urls,
+        tags
       }
     });
 

@@ -2,9 +2,12 @@
 import { Fragment, useState } from "react";
 import CreateProjectModal from "./CreateProjectModal";
 
-export default function CreateProjectBtn() {
-  const [showModal, setShowModal] = useState(false);
+interface OwnProps {
+  refreshProducts: () => Promise<void>;
+}
 
+export default function CreateProjectBtn({ refreshProducts }: OwnProps) {
+  const [showModal, setShowModal] = useState(false);
   return (
     <Fragment>
       <button
@@ -38,7 +41,12 @@ export default function CreateProjectBtn() {
         </div>
         <div className="absolute inset-0 bg-brown-100 -translate-y-full group-hover:translate-y-0 transition-transform duration-200 z-0"></div>
       </button>
-      {showModal && <CreateProjectModal onClose={() => setShowModal(false)} />}
+      {showModal && (
+        <CreateProjectModal
+          onClose={() => setShowModal(false)}
+          refreshProducts={refreshProducts}
+        />
+      )}
     </Fragment>
   );
 }

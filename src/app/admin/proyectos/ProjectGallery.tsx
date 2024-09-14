@@ -18,6 +18,7 @@ export default function ProjectGallery({
       <div className="grid grid-cols-3 gap-6">
         {products.map((product) => (
           <ProjectGalleryItem
+            key={product._id}
             product={product}
             onDelete={onDelete}
             refreshProducts={refreshProducts}

@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 
-export const confirmationModal = (text: string) => {
+export const successModal = (text: string) => {
   Swal.fire({
     title: "Èxito!",
     text: text,
@@ -44,7 +44,7 @@ export const deleteWarningModal = ({
       }
     })
     .then(() => {
-      confirmationModal(`La acción se ha realizado`);
+      successModal(`La acción se ha realizado`);
     })
     .catch(() => {
       errorModal("El producto no se pudo eliminar");

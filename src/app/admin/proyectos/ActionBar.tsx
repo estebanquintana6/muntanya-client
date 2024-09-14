@@ -1,10 +1,14 @@
 "use client";
 import CreateProjectBtn from "./CreateProjectBtn";
 
-export default function ActionBar() {
+interface OwnProps {
+    refreshProducts: () => Promise<void>;
+}
+
+export default function ActionBar({ refreshProducts } : OwnProps) {
     return (
         <div className="flex flex-row-reverse w-full mt-6">
-            <CreateProjectBtn />
+            <CreateProjectBtn refreshProducts={refreshProducts} />
         </div>
     )
 }
