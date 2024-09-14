@@ -14,7 +14,10 @@ export default function GalleryItem({ product }: OwnProps) {
       <div className="mt-4 w-full">
         <div className="my-4 flex flex-row flex-wrap w-full gap-2">
           {tags.map((tag) => (
-            <span className="text-sm text-nowrap text-primary font-zodiak-regular p-2 border-2 border-primary rounded-2xl">
+            <span
+              className="text-sm text-nowrap text-primary font-zodiak-regular p-2 border-2 border-primary rounded-2xl"
+              key={tag}
+            >
               {tag}
             </span>
           ))}
