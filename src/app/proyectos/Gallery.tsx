@@ -13,7 +13,7 @@ export default function Gallery({ products }: OwnProps) {
       <div className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
         <img src="/split.svg" className="w-6 hidden sm:block" />
       </div>
-      <div className="grid grid-col-1 sm:grid-cols-2 gap-x-[10vw] sm:gap-x-[20vw] gap-y-20 sm:gap-y-40 sm:mx-auto">
+      <div className="grid grid-col-1 sm:grid-cols-2 gap-x-[10vw] sm:gap-x-[20vw] gap-y-20 sm:gap-y-40 sm:mx-auto pb-12">
         {products.map((product) => (
           <GalleryItem product={product} key={product._id} />
         ))}
