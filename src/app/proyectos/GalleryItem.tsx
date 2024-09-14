@@ -1,16 +1,19 @@
 "use client";
-
 import { Product } from "../utils/interfaces/product";
+import Link from "next/link";
 
 interface OwnProps {
   product: Product;
 }
 
 export default function GalleryItem({ product }: OwnProps) {
-  const { title, photo_urls, tags = [] } = product;
+  const { _id, title, photo_urls, tags = [] } = product;
+
   return (
     <article className="col-span-1 p-4 sm:p-0 w-full sm:w-[25vw]">
-      <img src={photo_urls[0]} className="w-full" />
+      <Link href={`proyectos/${_id}/`}>
+        <img src={photo_urls[0]} className="w-full" />
+      </Link>
       <div className="mt-4 w-full">
         <div className="my-4 flex flex-row flex-wrap w-full gap-2">
           {tags.map((tag) => (
