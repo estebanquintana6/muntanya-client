@@ -48,6 +48,7 @@ export default function EditProjectModal({
 
       Array.from(files ?? []).forEach((file) => {
         if (file.size / 1024 / 1024 > 2) {
+          errorModal("Hay una foto que pesa más de 2MB");
           return;
         } else {
           newFilesArr.push(file);

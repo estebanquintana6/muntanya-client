@@ -1,6 +1,5 @@
 "use client";
 import { useState, useCallback, useMemo, ChangeEvent } from "react";
-import toast from "react-hot-toast";
 import { TagsInput } from "react-tag-input-component";
 
 import Modal from "@/app/common/Modal";
@@ -39,7 +38,7 @@ export default function CreateProjectModal({
 
       Array.from(files ?? []).forEach((file) => {
         if (file.size / 1024 / 1024 > 2) {
-          toast.error("File size too big (max 2MB)");
+          errorModal("Hay una foto que pesa más de 2MB");
           return;
         } else {
           newFilesArr.push(file);
