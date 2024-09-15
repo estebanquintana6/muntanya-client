@@ -50,7 +50,7 @@ export async function POST(req: Request) {
     return NextResponse.json(data);
 
   } catch (e) {
-    del(photo_urls);
+    if (photo_urls.length > 0) await del(photo_urls);
     return NextResponse.error();
   }
 }

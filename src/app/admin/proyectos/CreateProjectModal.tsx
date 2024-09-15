@@ -17,7 +17,7 @@ export default function CreateProjectModal({
   onClose,
   refreshProducts,
 }: OwnProps) {
-  const [data, setData] = useState<{ blob: string, url: string}[]>([]);
+  const [data, setData] = useState<{ blob: string; url: string }[]>([]);
   const [files, setFiles] = useState<File[] | null>(null);
   const [title, setTitle] = useState("");
   const [tags, setTags] = useState<string[]>([]);
@@ -39,7 +39,10 @@ export default function CreateProjectModal({
           newFilesArr.push(file);
           const reader = new FileReader();
           reader.onload = (e) => {
-            setData((prev) => [...prev, { blob: e.target?.result as string, url: file.name}]);
+            setData((prev) => [
+              ...prev,
+              { blob: e.target?.result as string, url: file.name },
+            ]);
           };
           reader.readAsDataURL(file);
         }
@@ -50,14 +53,12 @@ export default function CreateProjectModal({
     [setData],
   );
 
-  const handlePhotoDelete = (url : string) => {
-    setFiles((prev) => 
-      (prev || []).filter(({ name }) => name !== url)
+  const handlePhotoDelete = (url: string) => {
+    setFiles((prev) => (prev || []).filter(({ name }) => name !== url));
+    setData((prev) =>
+      (prev || []).filter(({ url: dataUrl }) => dataUrl !== url),
     );
-    setData((prev) => 
-      (prev || []).filter(({ url: dataUrl }) => dataUrl !== url)
-    );
-  }
+  };
 
   const onSave = async () => {
     setSaving(true);
@@ -127,7 +128,10 @@ export default function CreateProjectModal({
               <div className="absolute top-0">
                 <button
                   className="mr-auto ml-2 w-12 h-12 bg-red-600 mt-2 rounded-lg"
-                  onClick={() => handlePhotoDelete(url)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handlePhotoDelete(url);
+                  }}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
