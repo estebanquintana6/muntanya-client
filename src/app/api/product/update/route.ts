@@ -16,6 +16,7 @@ export async function POST(req: Request) {
   const id = form.get("id");
   const files = form.getAll("photos") as File[];
   const title = form.get("title");
+  const subtitle = form.get("subtitle");
   const description = form.get("description");
   const tags = form.get("tags");
   const toDeletePhotos: string[] = JSON.parse(
@@ -49,6 +50,7 @@ export async function POST(req: Request) {
       data: {
         id,
         title,
+        subtitle,
         description,
         tags,
         toDeletePhotos,

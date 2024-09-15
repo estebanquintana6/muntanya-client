@@ -22,12 +22,14 @@ export default function EditProjectModal({
   const {
     _id,
     title: o_title,
+    subtitle: o_subtitle,
     description: o_desc,
     photo_urls: o_photo_urls,
     tags: o_tags,
   } = product;
 
   const [title, setTitle] = useState<string>(o_title);
+  const [subTitle, setSubTitle] = useState<string>(o_subtitle);
   const [description, setDescription] = useState<string>(o_desc);
   const [tags, setTags] = useState<string[]>(o_tags);
   const [data, setData] = useState<{ blob: string; url: string }[]>([]);
@@ -89,6 +91,7 @@ export default function EditProjectModal({
 
     formData.append("id", _id);
     formData.append("title", title);
+    formData.append("subtitle", subTitle);
     formData.append("description", description);
     formData.append("toDeletePhotos", JSON.stringify(toDeletePhotos));
     formData.append("tags", JSON.stringify(tags));
@@ -249,6 +252,24 @@ export default function EditProjectModal({
                 "block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500",
             }}
             placeHolder="Introduce los tags"
+          />
+        </div>
+        <div className="w-full mt-4">
+          <label
+            htmlFor="name"
+            className="block mb-2 text-sm font-medium text-gray-900"
+          >
+            Subtítulo de descripción
+          </label>
+          <input
+            type="text"
+            name="subtitle"
+            id="subtitle"
+            value={subTitle}
+            onChange={(e) => setSubTitle(e.target.value)}
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+            placeholder="Escribe el nombre del producto"
+            required={true}
           />
         </div>
         <div className="w-full mt-4">

@@ -20,7 +20,8 @@ export default function CreateProjectModal({
   const [files, setFiles] = useState<File[] | null>(null);
   const [title, setTitle] = useState("");
   const [tags, setTags] = useState<string[]>([]);
-  const [description, setDescription] = useState("");
+  const [subTitle, setSubTitle] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
 
   const [saving, setSaving] = useState<boolean>(false);
 
@@ -74,6 +75,7 @@ export default function CreateProjectModal({
     });
 
     formData.append("title", title);
+    formData.append("subtitle", subTitle);
     formData.append("description", description);
     formData.append("tags", JSON.stringify(tags));
 
@@ -195,6 +197,24 @@ export default function CreateProjectModal({
                 "block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500",
             }}
             placeHolder="Introduce los tags"
+          />
+        </div>
+        <div className="w-full mt-4">
+          <label
+            htmlFor="name"
+            className="block mb-2 text-sm font-medium text-gray-900"
+          >
+            Subtítulo de descripción
+          </label>
+          <input
+            type="text"
+            name="subtitle"
+            id="subtitle"
+            value={subTitle}
+            onChange={(e) => setSubTitle(e.target.value)}
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+            placeholder="Escribe el nombre del producto"
+            required={true}
           />
         </div>
         <div className="w-full mt-4">
