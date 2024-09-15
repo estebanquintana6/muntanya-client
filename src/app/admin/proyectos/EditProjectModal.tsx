@@ -6,6 +6,7 @@ import { Product } from "@/app/utils/interfaces/product";
 import Modal from "@/app/common/Modal";
 
 import { successModal, errorModal } from "@/app/utils/alerts";
+import LoadingDots from "@/app/common/FileUploader/loading-dots";
 
 interface OwnProps {
   product: Product;
@@ -33,6 +34,8 @@ export default function EditProjectModal({
   const [files, setFiles] = useState<File[] | null>(null);
   const [toDeletePhotos, setToDeletePhotos] = useState<string[]>([]);
 
+  const [saving, setSaving] = useState<boolean>(false);
+
   const onChangePicture = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
       const files = event.currentTarget.files && event.currentTarget.files;
@@ -58,6 +61,7 @@ export default function EditProjectModal({
   );
 
   const onSave = async () => {
+    setSaving(true);
     const formData = new FormData();
 
     files?.forEach((file) => {
@@ -79,11 +83,12 @@ export default function EditProjectModal({
       if (status === 200) {
         successModal("El producto se ha creado");
         await refreshProducts();
+        onClose();
       } else {
         errorModal("El producto no se pudo crear");
       }
     } finally {
-      onClose();
+      setSaving(false);
     }
   };
 
@@ -116,8 +121,8 @@ export default function EditProjectModal({
             />
           </div>
         </div>
-        {data.length > 0 &&
-          data.map((url) => (
+        {o_photo_urls.length > 0 &&
+          o_photo_urls.map((url) => (
             <div
               className="group relative cursor-auto mt-2 flex h-60 flex-col items-center justify-center rounded-md border border-gray-300 bg-white shadow-sm transition-all hover:bg-gray-50"
               key={url}
@@ -190,19 +195,25 @@ export default function EditProjectModal({
               onSave();
             }}
           >
-            <svg
-              className="me-1 -ms-1 w-5 h-5"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-                clipRule="evenodd"
-              ></path>
-            </svg>
-            Guardar
+            {saving ? (
+              <LoadingDots color="#808080" />
+            ) : (
+              <>
+                <svg
+                  className="me-1 -ms-1 w-5 h-5"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                    clipRule="evenodd"
+                  ></path>
+                </svg>
+                Guardar
+              </>
+            )}
           </button>
         </div>
       </form>

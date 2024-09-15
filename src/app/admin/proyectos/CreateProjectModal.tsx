@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { TagsInput } from "react-tag-input-component";
 
 import Modal from "@/app/common/Modal";
+import LoadingDots from "@/app/common/FileUploader/loading-dots";
 
 import { successModal, errorModal } from "@/app/utils/alerts";
 
@@ -21,6 +22,8 @@ export default function CreateProjectModal({
   const [title, setTitle] = useState("");
   const [tags, setTags] = useState<string[]>([]);
   const [description, setDescription] = useState("");
+
+  const [saving, setSaving] = useState<boolean>(false);
 
   const onChangePicture = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
@@ -48,6 +51,7 @@ export default function CreateProjectModal({
   );
 
   const onSave = async () => {
+    setSaving(true);
     const formData = new FormData();
 
     files?.forEach((file) => {
@@ -66,12 +70,13 @@ export default function CreateProjectModal({
 
       if (res) {
         successModal("El producto se ha creado");
+        onClose();
         await refreshProducts();
       }
     } catch (e) {
       errorModal("El producto no se pudo crear");
     } finally {
-      onClose();
+      setSaving(false);
     }
   };
 
@@ -173,24 +178,31 @@ export default function CreateProjectModal({
           <button
             type="submit"
             className="text-black mx-auto inline-flex border-brown-100 border-2 items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+            disabled={saving}
             onClick={(e) => {
               e.preventDefault();
               onSave();
             }}
           >
-            <svg
-              className="me-1 -ms-1 w-5 h-5"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-                clipRule="evenodd"
-              ></path>
-            </svg>
-            Guardar
+            {saving ? (
+              <LoadingDots color="#808080" />
+            ) : (
+              <>
+                <svg
+                  className="me-1 -ms-1 w-5 h-5"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                    clipRule="evenodd"
+                  ></path>
+                </svg>
+                Guardar
+              </>
+            )}
           </button>
         </div>
       </form>
