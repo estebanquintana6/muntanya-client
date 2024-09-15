@@ -13,35 +13,26 @@ const nanoid = customAlphabet(
 export async function POST(req: Request) {
   const form = await req.formData();
 
+  const id = form.get("id");
   const files = form.getAll('photos') as File[];
   const title = form.get('title');
   const description = form.get('description');
   const tags = form.get('tags');
+  const toDeletePhotos = form.get('toDeletePhotos');
 
-  const photo_urls = [];
 
   try {
-    for (const file of files) {
-      const contentType = file.type;
-      const filename = `${nanoid()}.${contentType.split('/')[1]}`;
-      const blob = await put(filename, file, {
-        contentType,
-        access: 'public',
-      });
-      photo_urls.push(blob.url);
-    }
-
     const { data } = await axios({
-      url: `${process.env.SERVER_URL}/products/create`,
+      url: `${process.env.SERVER_URL}/products/update`,
       method: "POST",
       headers: {
         Authorization: cookies().get("session")?.value,
         "Content-Type": "application/json"
       },
-      data: {     
+      data: {
+        id,
         title,
         description,
-        photo_urls,
         tags
       }
     });

@@ -1,26 +1,37 @@
 "use client";
 import { useState, useCallback, ChangeEvent } from "react";
-import toast from "react-hot-toast";
 import { TagsInput } from "react-tag-input-component";
 
+import { Product } from "@/app/utils/interfaces/product";
 import Modal from "@/app/common/Modal";
 
 import { successModal, errorModal } from "@/app/utils/alerts";
 
 interface OwnProps {
+  product: Product;
   onClose: () => void;
   refreshProducts: () => Promise<void>;
 }
 
-export default function CreateProjectModal({
+export default function EditProjectModal({
+  product,
   onClose,
   refreshProducts,
 }: OwnProps) {
+  const {
+    _id,
+    title: o_title,
+    description: o_desc,
+    photo_urls: o_photo_urls,
+    tags: o_tags,
+  } = product;
+
+  const [title, setTitle] = useState<string>(o_title);
+  const [description, setDescription] = useState<string>(o_desc);
+  const [tags, setTags] = useState<string[]>(o_tags);
   const [data, setData] = useState<string[]>([]);
   const [files, setFiles] = useState<File[] | null>(null);
-  const [title, setTitle] = useState("");
-  const [tags, setTags] = useState<string[]>([]);
-  const [description, setDescription] = useState("");
+  const [toDeletePhotos, setToDeletePhotos] = useState<string[]>([]);
 
   const onChangePicture = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
@@ -30,7 +41,6 @@ export default function CreateProjectModal({
 
       Array.from(files ?? []).forEach((file) => {
         if (file.size / 1024 / 1024 > 2) {
-          toast.error("File size too big (max 2MB)");
           return;
         } else {
           newFilesArr.push(file);
@@ -54,29 +64,31 @@ export default function CreateProjectModal({
       formData.append("photos", file); // 'file${index}' is the field name for each file
     });
 
+    formData.append("id", _id);
     formData.append("title", title);
     formData.append("description", description);
+    formData.append("toDeletePhotos", JSON.stringify(toDeletePhotos));
     formData.append("tags", JSON.stringify(tags));
 
     try {
-      const res = await fetch("/api/product/create", {
+      const { status } = await fetch("/api/product/update", {
         method: "POST",
         body: formData,
       });
 
-      if (res) {
+      if (status === 200) {
         successModal("El producto se ha creado");
         await refreshProducts();
+      } else {
+        errorModal("El producto no se pudo crear");
       }
-    } catch (e) {
-      errorModal("El producto no se pudo crear");
     } finally {
       onClose();
     }
   };
 
   return (
-    <Modal title={"Crear nuevo producto"} onClose={onClose}>
+    <Modal title={title} onClose={onClose}>
       <form className="p-4 md:p-5">
         <div>
           <div className="space-y-1 mb-4">

@@ -1,8 +1,11 @@
 "use client";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 import { Product } from "@/app/utils/interfaces/product";
 import { deleteWarningModal } from "@/app/utils/alerts";
-import { useRouter } from "next/navigation";
+
+import EditProjectModal from "./EditProjectModal";
 
 interface OwnProps {
   product: Product;
@@ -15,6 +18,8 @@ export default function ProjectGalleryItem({
   onDelete,
   refreshProducts,
 }: OwnProps) {
+  const [showEditModal, setShowEditModal] = useState(false);
+
   const router = useRouter();
 
   const { title, photo_urls } = product;
@@ -103,7 +108,10 @@ export default function ProjectGalleryItem({
             </svg>
           )}
         </button>
-        <button className="mx-2 w-12 h-12 mt-2 bg-green rounded-lg">
+        <button
+          className="mx-2 w-12 h-12 mt-2 bg-green rounded-lg"
+          onClick={() => setShowEditModal(true)}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -140,6 +148,13 @@ export default function ProjectGalleryItem({
           </svg>
         </button>
       </div>
+      {showEditModal && (
+        <EditProjectModal
+          product={product}
+          onClose={() => setShowEditModal(false)}
+          refreshProducts={refreshProducts}
+        />
+      )}
     </div>
   );
 }
