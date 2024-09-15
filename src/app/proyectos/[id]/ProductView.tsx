@@ -7,7 +7,7 @@ interface OwnProps {
 }
 
 export default function ProductView({ product }: OwnProps) {
-  const { title, tags, photo_urls, description } = product;
+  const { title, tags, photo_urls, description, subtitle } = product;
 
   return (
     <section className="min-h-screen">
@@ -33,7 +33,7 @@ export default function ProductView({ product }: OwnProps) {
       </div>
       <div className="mt-4 w-full sm:w-2/3 px-8 sm:px-12 py-12">
         <h1 className="text-3xl font-zodiak-bold text-brown-100 mb-2">
-          Ejemplo de subtitulo
+          {subtitle}
         </h1>
         <p className="text-lg text-brown-100 font-zodiak-regular whitespace-pre-wrap">
           {description}
