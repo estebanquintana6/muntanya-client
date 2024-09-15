@@ -1,5 +1,5 @@
 "use client";
-import { useState, useCallback, ChangeEvent } from "react";
+import { useState, useCallback, useMemo, ChangeEvent } from "react";
 import toast from "react-hot-toast";
 import { TagsInput } from "react-tag-input-component";
 
@@ -24,6 +24,12 @@ export default function CreateProjectModal({
   const [description, setDescription] = useState("");
 
   const [saving, setSaving] = useState<boolean>(false);
+
+  const saveDisabled = useMemo(() => {
+    return (
+      data.length == 0 || title.length < 1 || description.length < 1 || saving
+    );
+  }, [data, saving, title, description]);
 
   const onChangePicture = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
@@ -211,8 +217,8 @@ export default function CreateProjectModal({
         <div className="flex mt-4">
           <button
             type="submit"
-            className="text-black mx-auto inline-flex border-brown-100 border-2 items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-            disabled={saving}
+            className={`${saveDisabled && "cursor-not-allowed border-gray-200 bg-gray-100 text-gray-400 "}text-black mx-auto inline-flex border-brown-100 border-2 items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center`}
+            disabled={saveDisabled}
             onClick={(e) => {
               e.preventDefault();
               onSave();
