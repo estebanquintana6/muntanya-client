@@ -22,7 +22,7 @@ export default function ProjectGalleryItem({
 
   const router = useRouter();
 
-  const { title, photo_urls } = product;
+  const { _id, title, photo_urls, favorite } = product;
 
   const confirmDelete = async () => {
     const { _id } = product;
@@ -38,8 +38,22 @@ export default function ProjectGalleryItem({
   };
 
   const handleSeeProject = () => {
-    const { _id } = product;
     router.push(`/proyectos/${_id}`);
+  };
+
+  const toggleFavorite = async () => {
+    const formData = new FormData();
+    formData.append("id", _id);
+    formData.append("favorite", String(!favorite));
+
+    try {
+      await fetch("/api/product/favorite", {
+        method: "POST",
+        body: formData,
+      });
+    } finally {
+      await refreshProducts();
+    }
   };
 
   return (
@@ -81,8 +95,11 @@ export default function ProjectGalleryItem({
             />
           </svg>
         </button>
-        <button className="mx-2 w-12 h-12 mt-2 bg-blue rounded-lg">
-          {true ? (
+        <button
+          className="mx-2 w-12 h-12 mt-2 bg-blue rounded-lg"
+          onClick={toggleFavorite}
+        >
+          {favorite ? (
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"

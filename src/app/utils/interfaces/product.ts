@@ -4,5 +4,6 @@ export interface Product {
     description: string,
     photo_urls: string[],
     tags: string[],
+    favorite: boolean;
     created_at: string,
 }
