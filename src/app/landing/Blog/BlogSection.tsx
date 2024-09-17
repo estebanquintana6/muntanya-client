@@ -15,7 +15,6 @@ export default function BlogSection({ fetchRecentBlogEntries } : OwnProps) {
   useEffect(() => {
     const getBlogEntries = async () => {
       const data = await fetchRecentBlogEntries();
-      console.log(data);
       setBlogEntries(data);
     }
     getBlogEntries();
