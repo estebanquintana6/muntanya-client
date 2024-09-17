@@ -6,7 +6,7 @@ interface OwnProps {
   blogEntry: BlogEntry;
 }
 
-export default function BlogEntry({ blogEntry }: OwnProps) {
+export default function BlogEntryPage({ blogEntry }: OwnProps) {
   const { title, subtitle, description, created_at } = blogEntry;
 
   const dateOptions: Intl.DateTimeFormatOptions = {

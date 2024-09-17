@@ -223,7 +223,7 @@ export default function EditBlogEntryModal({
             htmlFor="name"
             className="block mb-2 text-sm font-medium text-gray-900"
           >
-            Nombre
+            Título
           </label>
           <input
             type="text"
@@ -231,6 +231,24 @@ export default function EditBlogEntryModal({
             id="name"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+            placeholder="Escribe el nombre del producto"
+            required={true}
+          />
+        </div>
+        <div className="w-full mt-4">
+          <label
+            htmlFor="name"
+            className="block mb-2 text-sm font-medium text-gray-900"
+          >
+            Subtítulo
+          </label>
+          <input
+            type="text"
+            name="subtitle"
+            id="subtitle"
+            value={subTitle}
+            onChange={(e) => setSubTitle(e.target.value)}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
             placeholder="Escribe el nombre del producto"
             required={true}
@@ -256,28 +274,10 @@ export default function EditBlogEntryModal({
         </div>
         <div className="w-full mt-4">
           <label
-            htmlFor="name"
-            className="block mb-2 text-sm font-medium text-gray-900"
-          >
-            Subtítulo de descripción
-          </label>
-          <input
-            type="text"
-            name="subtitle"
-            id="subtitle"
-            value={subTitle}
-            onChange={(e) => setSubTitle(e.target.value)}
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-            placeholder="Escribe el nombre del producto"
-            required={true}
-          />
-        </div>
-        <div className="w-full mt-4">
-          <label
             htmlFor="description"
             className="block mb-2 text-sm font-medium text-gray-900"
           >
-            Descripción de producto
+            Texto
           </label>
           <textarea
             id="description"
