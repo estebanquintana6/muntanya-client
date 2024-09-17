@@ -19,6 +19,7 @@ export default function BlogComponent({ blogEntry }: OwnProps) {
         {tags.map((tag) => (
           <a
             href="#_"
+            key={`_id-${tag}`}
             className="inline-block text-xs font-semibold absolute sm:mb-5 xl:mb-0 sm:relative xl:absolute top-0 -mt-3.5 rounded-full px-4 py-2 uppercase text-black bg-white"
           >
             {tag}
