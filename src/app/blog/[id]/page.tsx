@@ -8,19 +8,18 @@ interface OwnProps {
   };
 }
 
-export default async function BlogEntryPage({ params } : OwnProps) {
+export default async function BlogEntryPage({ params }: OwnProps) {
   const { id } = params;
 
-    const blogEntry = await getBlogEntryById(id);
+  const blogEntry = await getBlogEntryById(id);
 
-    if (!blogEntry) {
-      notFound();
-    }
+  if (!blogEntry) {
+    notFound();
+  }
 
-    return (
-      <main>
-        <BlogEntry blogEntry={blogEntry} />
-      </main>
-    );
+  return (
+    <main>
+      <BlogEntry blogEntry={blogEntry} />
+    </main>
+  );
 }
-  
