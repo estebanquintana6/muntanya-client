@@ -22,6 +22,15 @@ export async function getProductById(id: string): Promise<Product | null> {
   }
 }
 
+export async function getRelatedById(id: string): Promise<Product[]> {
+  try {
+    const { data } = await axios.get(`${process.env.SERVER_URL}/products/related/${id}`);
+    return data;
+  } catch (e) {
+    return [];
+  }
+}
+
 export async function deleteProduct(_id: string) {
   try {
     const { data } = await axios.delete(
