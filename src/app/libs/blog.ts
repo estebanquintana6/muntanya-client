@@ -23,7 +23,7 @@ export async function getRecentBlogEntries(): Promise<BlogEntry[]> {
   }
 }
 
-export async function getProductById(id: string): Promise<BlogEntry | null> {
+export async function getBlogEntryById(id: string): Promise<BlogEntry | null> {
   try {
     const { data } = await axios.get(`${process.env.SERVER_URL}/blog/${id}`);
     return data;
