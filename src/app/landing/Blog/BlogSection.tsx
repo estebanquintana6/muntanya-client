@@ -1,8 +1,26 @@
 "use client";
+import { useEffect, useState } from "react";
+import { BlogEntry } from "@/app/utils/interfaces/blogEntry";
 
 import LandingPageButton from "../shared/LandingPageBtn";
+import BlogComponent from "./BlogComponent";
 
-export default function BlogSection() {
+interface OwnProps {
+  fetchRecentBlogEntries: () => Promise<BlogEntry[]>;
+}
+
+export default function BlogSection({ fetchRecentBlogEntries } : OwnProps) {
+  const [blogEntries, setBlogEntries] = useState<BlogEntry[]>([]);
+
+  useEffect(() => {
+    const getBlogEntries = async () => {
+      const data = await fetchRecentBlogEntries();
+      console.log(data);
+      setBlogEntries(data);
+    }
+    getBlogEntries();
+  }, []);
+
   return (
     <section className="min-h-screen bg-brown-100 py-12 px-9 flex flex-col">
       <div className="text-6xl text-center font-zodiak-bold mb-10 text-green">
@@ -21,73 +39,7 @@ export default function BlogSection() {
         </div>
       <div className="container font-zodiak-regular mx-auto">
         <div className="grid h-full grid-cols-12 gap-5 lg:gap-10 pb-10 mt-8 sm:mt-16">
-          <div className="relative flex flex-col items-start justify-end h-full col-span-12 overflow-hidden rounded-xl group md:col-span-6 xl:col-span-4 bg-blog-default-1 bg-cover">
-            <div className="absolute w-full h-full bg-black top-0 left-0 bg-opacity-50"></div>
-            <a
-              href="#_"
-              className="block w-full transition duration-300 ease-in-out transform bg-center bg-cover h-96 hover:scale-110"
-            ></a>
-            <div className="relative z-20 w-full h-auto py-8 text-white border-t-0 border-indigo-200 px-7">
-              <a
-                href="#_"
-                className="inline-block text-xs font-semibold absolute sm:mb-5 xl:mb-0 sm:relative xl:absolute top-0 -mt-3.5 rounded-full px-4 py-2 uppercase text-black bg-white"
-              >
-                Materiales
-              </a>
-              <h2 className="mb-5 text-5xl font-bold">
-                <a href="#_">Ejemplo 1</a>
-              </h2>
-              <p className="mb-2 text-lg font-normal text-purple-100 opacity-100">
-                Quench satisfying designs to help you stir up emotion and tell a
-                story.
-              </p>
-            </div>
-          </div>
-          <div className="relative flex flex-col items-start justify-end h-full col-span-12 overflow-hidden rounded-xl group md:col-span-6 xl:col-span-4 bg-blog-default-2 bg-cover">
-            <div className="absolute w-full h-full bg-black top-0 left-0 bg-opacity-50"></div>
-            <a
-              href="#_"
-              className="block w-full transition duration-300 ease-in-out transform bg-center bg-cover h-96 hover:scale-110"
-            ></a>
-            <div className="relative z-20 w-full h-auto py-8 text-white bg-blue-400 border-t-0 border-indigo-200 px-7">
-              <a
-                href="#_"
-                className="inline-block text-xs font-semibold absolute sm:mb-5 xl:mb-0 sm:relative xl:absolute top-0 -mt-3.5 rounded-full px-4 py-2 uppercase text-black bg-white"
-              >
-                Materiales
-              </a>
-              <h2 className="mb-5 text-5xl font-bold">
-                <a href="#_">Ejemplo 2</a>
-              </h2>
-              <p className="mb-2 text-lg font-normal text-blue-100 opacity-100">
-                Living a healthier lifestyle will help with your productivity
-                and your mind-set.
-              </p>
-            </div>
-          </div>
-
-          <div className="relative flex flex-col items-start justify-end h-full col-span-12 overflow-hidden rounded-xl group sm:col-span-12 xl:col-span-4 sm:flex-row xl:flex-col bg-blog-default-3 bg-cover">
-            <div className="absolute w-full h-full bg-black top-0 left-0 bg-opacity-50"></div>
-            <a
-              href="#_"
-              className="block w-full transition duration-300 ease-in-out transform bg-center bg-cover h-96 hover:scale-110"
-            ></a>
-            <div className="relative z-20 flex flex-col items-start justify-center w-full h-auto py-8 text-white border-t-0 border-indigo-200 sm:h-full xl:h-auto px-7">
-              <a
-                href="#_"
-                className="inline-block text-xs font-semibold absolute sm:mb-5 xl:mb-0 sm:relative xl:absolute top-0 -mt-3.5 rounded-full px-4 py-2 uppercase text-black bg-white"
-              >
-                Materiales
-              </a>
-              <h2 className="mb-5 text-5xl font-bold">
-                <a href="#_">Ejemplo 3</a>
-              </h2>
-              <p className="mb-2 text-lg font-normal opacity-100 text-indigo-50">
-                Learn about the evolution of gaming and how it started a
-                revolution.
-              </p>
-            </div>
-          </div>
+        { blogEntries.map((blogEntry) => <BlogComponent blogEntry={blogEntry} />)}
         </div>
       </div>
       <div className="flex justify-center text-center">

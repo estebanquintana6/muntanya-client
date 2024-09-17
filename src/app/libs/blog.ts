@@ -13,6 +13,16 @@ export async function getBlogEntries(): Promise<BlogEntry[]> {
   }
 }
 
+export async function getRecentBlogEntries(): Promise<BlogEntry[]> {
+  try {
+    const { data } = await axios.get(`${process.env.SERVER_URL}/blog/recent`);
+    return data;
+  } catch {
+    console.error("Error al obtener las entradas de blog");
+    return [];
+  }
+}
+
 export async function getProductById(id: string): Promise<BlogEntry | null> {
   try {
     const { data } = await axios.get(`${process.env.SERVER_URL}/blog/${id}`);
