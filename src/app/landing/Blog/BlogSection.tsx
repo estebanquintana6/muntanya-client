@@ -39,7 +39,7 @@ export default function BlogSection({ fetchRecentBlogEntries } : OwnProps) {
         </div>
       <div className="container font-zodiak-regular mx-auto">
         <div className="grid h-full grid-cols-12 gap-5 lg:gap-10 pb-10 mt-8 sm:mt-16">
-        { blogEntries.map((blogEntry) => <BlogComponent blogEntry={blogEntry} />)}
+        { blogEntries.map((blogEntry) => <BlogComponent blogEntry={blogEntry} key={blogEntry._id} />)}
         </div>
       </div>
       <div className="flex justify-center text-center">
