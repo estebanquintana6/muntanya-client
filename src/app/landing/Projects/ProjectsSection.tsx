@@ -38,28 +38,35 @@ export default function ProjectsSection({ favorites }: OwnProps) {
         </div>
         <ProjectSwiper />
       </div>
-      <div className="px-16 mt-8">
-        {favorites.map(({ _id, title, subtitle, description, photo_urls }) => (
-          <div className="w-full h-[70vh] flex gap-x-8" key={_id}>
-            <div className="h-full w-1/2">
-              <img
-                src={photo_urls[0]}
-                className="object-cover h-full w-full rounded-2xl"
-              />
+      <div className="px-10 mt-8 sm:px-16">
+        {favorites.map(
+          ({ _id, title, subtitle, description, photo_urls }, index) => (
+            <div
+              className={`w-full flex flex-col-reverse ${index % 2 ? "sm:flex-row" : "sm:flex-row-reverse"} gap-x-8 my-12 sm:h-[70vh]`}
+              key={_id}
+            >
+              <div className="h-full w-full sm:w-1/2">
+                <img
+                  src={photo_urls[0]}
+                  className="object-cover h-full w-full rounded-2xl"
+                />
+              </div>
+              <div
+                className={`h-full w-full py-8 ${index % 2 ? "sm:border-l-4" : "sm:border-r-4"} sm:border-brown-100 sm:w-1/2 sm:p-8`}
+              >
+                <h1 className="text-3xl text-brown-50 font-zodiak-bold">
+                  {title}
+                </h1>
+                <h2 className="text-xl text-brown-25 font-zodiak-bold mt-8">
+                  {subtitle}
+                </h2>
+                <p className="text-md text-brown-100 font-zodiak-regular whitespace-pre text-wrap line-clamp-[12] sm:line-clamp-[20]">
+                  {description}
+                </p>
+              </div>
             </div>
-            <div className="h-full w-1/2 border-l-4 border-brown-100 p-8">
-              <h1 className="text-3xl text-brown-50 font-zodiak-bold">
-                {title}
-              </h1>
-              <h2 className="text-xl text-brown-25 font-zodiak-bold mt-8">
-                {subtitle}
-              </h2>
-              <p className="text-md text-brown-100 font-zodiak-regular whitespace-pre text-wrap">
-                {description}
-              </p>
-            </div>
-          </div>
-        ))}
+          ),
+        )}
       </div>
       <div className="flex justify-center text-center mt-8">
         <LandingPageButton title="Ver más proyectos" href="/proyectos" />
