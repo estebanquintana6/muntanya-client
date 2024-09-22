@@ -6,12 +6,15 @@ import BlogSection from "./landing/Blog/BlogSection";
 import Footer from "./landing/shared/Footer";
 
 import { getRecentBlogEntries } from "./libs/blog";
+import { getFavoriteProducts } from "./libs/projects";
 
-export default function Home() {
+export default async function Home() {
   const fetchRecentBlogEntries = async () => {
     "use server";
     return await getRecentBlogEntries();
   };
+
+  const favoriteProducts = await getFavoriteProducts();
 
   return (
     <>
@@ -19,7 +22,7 @@ export default function Home() {
         <Navbar />
         <Header />
         <About />
-        <ProjectsSection />
+        <ProjectsSection favorites={favoriteProducts} />
         <BlogSection fetchRecentBlogEntries={fetchRecentBlogEntries} />
       </main>
       <Footer />

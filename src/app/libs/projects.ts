@@ -22,6 +22,16 @@ export async function getProductById(id: string): Promise<Product | null> {
   }
 }
 
+export async function getFavoriteProducts(): Promise<Product[]> {
+  try {
+    const { data } = await axios.get(`${process.env.SERVER_URL}/products/favorite`);
+    return data;
+  } catch {
+    console.error("Error al obtener los productos");
+    return [];
+  }
+}
+
 export async function getRelatedById(id: string): Promise<Product[]> {
   try {
     const { data } = await axios.get(`${process.env.SERVER_URL}/products/related/${id}`);
