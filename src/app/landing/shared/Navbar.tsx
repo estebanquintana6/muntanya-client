@@ -14,7 +14,7 @@ export default function Navbar({ variant = 'light' }: OwnProps) {
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
             <img
-              src="/logo_black.png"
+              src={variant === 'dark' ? "/logo_white.png" : '/logo_black.png'}
               className="h-6 sm:h-9"
               alt="Flowbite Logo"
             />
