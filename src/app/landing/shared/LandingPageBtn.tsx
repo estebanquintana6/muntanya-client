@@ -14,7 +14,7 @@ export default function LandingPageButton({ title, href = "#" }: OwnProps) {
   };
 
   return (
-    <button onClick={toLink} className="group flex justify-center items-center gap-6 px-12 py-4 bg-primary text-black font-mono font-semibold text-xl relative overflow-hidden rounded-xl border-4 border-black hover:shadow-[0px_0px_0px_#000] transition-all duration-200">
+    <button onClick={toLink} className="group flex justify-center items-center gap-6 px-4 py-2 bg-primary text-black font-mono font-semibold text-xl relative overflow-hidden rounded-xl border-4 border-black hover:shadow-[0px_0px_0px_#000] transition-all duration-200 sm:px-6 sm:py-2">
       <div className="relative overflow-hidden z-[1] transition-all duration-200">
         <span className="group-hover:translate-y-full font-zodiak-bold inline-block transition-all duration-200">
           {title}
@@ -23,7 +23,7 @@ export default function LandingPageButton({ title, href = "#" }: OwnProps) {
           {title}
         </span>
       </div>
-      <div className="w-12 aspect-square rounded-full border-2 border-brown-100 flex justify-center items-center bg-primary z-[1] transition-all duration-200 relative overflow-hidden">
+      <div className="w-8 sm:w-12 aspect-square rounded-full border-2 border-brown-100 flex justify-center items-center bg-primary z-[1] transition-all duration-200 relative overflow-hidden">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="18"

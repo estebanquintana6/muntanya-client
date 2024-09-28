@@ -69,7 +69,7 @@ export default function ProjectsSection({ favorites }: OwnProps) {
         )}
       </div>
       <div className="flex justify-center text-center mt-8">
-        <LandingPageButton title="Ver más proyectos" href="/proyectos" />
+        <LandingPageButton title="Más proyectos" href="/proyectos" />
       </div>
     </section>
   );
