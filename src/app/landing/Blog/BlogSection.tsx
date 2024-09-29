@@ -42,7 +42,7 @@ export default function BlogSection({ fetchRecentBlogEntries } : OwnProps) {
         </div>
       </div>
       <div className="flex justify-center text-center">
-        <LandingPageButton title="Visita el blog" />
+        <LandingPageButton title="Visita el blog" href="/blog" />
       </div>
     </section>
   );

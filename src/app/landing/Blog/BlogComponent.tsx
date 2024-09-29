@@ -6,10 +6,13 @@ interface OwnProps {
 }
 
 export default function BlogComponent({ blogEntry }: OwnProps) {
-  const { _id, title, description, tags } = blogEntry;
-
+  const { _id, title, description, tags, photo_urls } = blogEntry;
   return (
     <div className="relative flex flex-col items-start justify-end h-full col-span-12 overflow-hidden rounded-xl group md:col-span-6 xl:col-span-4 bg-blog-default-1 bg-cover">
+      <img
+        src={photo_urls[0]}
+        className="h-full w-full object-cover absolute top-0"
+      />
       <div className="absolute w-full h-full bg-black top-0 left-0 bg-opacity-50"></div>
       <Link
         href={`/blog/${_id}`}
