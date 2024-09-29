@@ -17,7 +17,7 @@ export default function BlogGallery({ blogEntries }: OwnProps) {
   //const olderEntries = rest.slice(4, rest.length - 1);
 
   return (
-    <section className="grid grid-cols-2 gap-8 w-full px-12 pb-12">
+    <section className="grid grid-cols-2 gap-8 w-full px-4 sm:px-12 pb-12">
       <div className="col-span-2 sm:col-span-1 sm:py-12">
         <RecentBlogEntry blogEntry={mostRecent} />
       </div>
