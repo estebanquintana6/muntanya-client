@@ -10,7 +10,7 @@ export default function BlogEntryCell({ blogEntry }: OwnProps) {
   const { _id, photo_urls, tags, title, description } = blogEntry;
 
   return (
-    <div className="w-full h-72 relative rounded-xl flex flex-col items-start justify-end">
+    <div className="w-full h-56 relative rounded-xl flex flex-col items-start justify-end sm:h-72">
       <Link
         href={`/blog/${_id}`}
         className="z-50 absolute top-0 lef-0 h-full w-full"
