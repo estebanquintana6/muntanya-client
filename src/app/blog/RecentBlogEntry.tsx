@@ -12,7 +12,7 @@ export default function RecentBlogEntry({ blogEntry }: OwnProps) {
   const mainPhoto = photo_urls[0];
 
   return (
-    <div className="w-full sm:h-full flex items-center justify-center">
+    <div className="w-full h-96 sm:h-full flex items-center justify-center">
       <div className="relative flex flex-col items-start justify-end h-full col-span-12 overflow-hidden rounded-xl group md:col-span-6 xl:col-span-4 max-h-96 sm:max-h-none">
         <Link
           href={`/blog/${_id}`}
