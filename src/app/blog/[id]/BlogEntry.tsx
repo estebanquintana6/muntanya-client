@@ -22,7 +22,7 @@ export default function BlogEntryPage({ blogEntry }: OwnProps) {
   };
 
   return (
-    <section className="blog-grid gap-8 w-full px-4 sm:px-12 pb-12">
+    <section className="blog-grid gap-8 w-full h-screen px-4 sm:px-12 pb-12">
       <div className="flex flex-col">
         <h1 className="uppercase blog-entry-title block break-words hyphens-auto text-brown-100 font-zodiak-light">
           {title}
@@ -44,7 +44,7 @@ export default function BlogEntryPage({ blogEntry }: OwnProps) {
             pagination={{
               clickable: true,
             }}
-            className="h-[60vh] w-full"
+            className="min-h-[60vh] h-[60vh] w-full"
           >
             {photo_urls.map((url) => (
               <SwiperSlide className="blog-swiper-slide w-auto">
