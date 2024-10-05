@@ -49,7 +49,7 @@ export default function BlogEntryPage({ blogEntry }: OwnProps) {
             className="min-h-[60vh] h-[60vh] w-full"
           >
             {photo_urls.map((url) => (
-              <SwiperSlide className="blog-swiper-slide w-auto">
+              <SwiperSlide className="blog-swiper-slide w-auto" key={url}>
                 <img src={url} className="h-full rounded-2xl" />
               </SwiperSlide>
             ))}
