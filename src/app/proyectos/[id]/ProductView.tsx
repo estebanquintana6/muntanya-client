@@ -35,7 +35,7 @@ export default function ProductView({ product }: OwnProps) {
         <h1 className="text-3xl font-zodiak-bold text-brown-100 mb-2">
           {subtitle}
         </h1>
-        <p className="text-lg text-brown-100 font-zodiak-regular whitespace-pre-wrap">
+        <p className="text-lg text-brown-100 text-justify font-zodiak-regular whitespace-pre-wrap">
           {description}
         </p>
       </div>

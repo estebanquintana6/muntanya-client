@@ -8,8 +8,6 @@ export async function POST(req: Request) {
 
   const id = form.get("id") as string;
   const favorite = form.get("favorite") as string;
-
-  console.log(id, favorite);
   
   try {
     

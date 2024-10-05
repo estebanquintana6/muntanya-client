@@ -30,8 +30,8 @@ export default function BlogEntryCell({ blogEntry }: OwnProps) {
             {tag}
           </a>
         ))}
-        <h2 className="mb-1 text-xl font-zodiak-bold sm:text-3xl">{title}</h2>
-        <p className="text-xs font-zodiak-regular text-purple-100 opacity-100 line-clamp-2 sm:text-sm">
+        <h2 className="mb-1 text-xl uppercase font-zodiak-light overflow-clip text-primary sm:text-3xl">{title}</h2>
+        <p className="text-xs font-zodiak-regular text-primary opacity-100 line-clamp-2 sm:text-sm">
           {description}
         </p>
       </div>

@@ -28,10 +28,10 @@ export default function BlogComponent({ blogEntry }: OwnProps) {
             {tag}
           </a>
         ))}
-        <h2 className="mb-5 text-5xl font-bold">
+        <h2 className="mb-5 text-3xl overflow-clip text-primary font-zodiak-light uppercase">
           <a href="#_">{title}</a>
         </h2>
-        <p className="mb-2 text-lg font-normal text-purple-100 opacity-100 line-clamp-2">
+        <p className="mb-2 text-lg font-normal text-primary opacity-100 line-clamp-2">
           {description}
         </p>
       </div>

@@ -10,8 +10,6 @@ interface OwnProps {
 }
 
 export default function ProjectsSection({ favorites }: OwnProps) {
-  console.log(favorites);
-
   return (
     <section className="w-full min-h-screen bg-primary py-12">
       <div className="w-full relative flex flex-col sm:flex-row">

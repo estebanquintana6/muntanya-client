@@ -20,7 +20,7 @@ export default function RelatedProducts({ related }: OwnProps) {
             <div className="col-span-1 relative" key={`project-${_id}`}>
               <Link href={`/proyectos/${_id}`}>
                 <div className="bg-black bg-opacity-50 absolute top-0 w-full h-full rounded-2xl flex">
-                  <h2 className="text-xl text-primary m-auto font-zodiak-regular sm:text-2xl">
+                  <h2 className="text-xl text-primary m-auto font-zodiak-light uppercase sm:text-2xl">
                     {title}
                   </h2>
                 </div>

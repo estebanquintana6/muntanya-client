@@ -18,10 +18,10 @@ export default function BlogGallery({ blogEntries }: OwnProps) {
 
   return (
     <section className="grid grid-cols-2 gap-8 w-full px-4 sm:px-12 pb-12">
-      <div className="col-span-2 sm:col-span-1 sm:py-12">
+      <div className="col-span-2 md:col-span-1 sm:py-12">
         <RecentBlogEntry blogEntry={mostRecent} />
       </div>
-      <div className="col-span-2 sm:col-span-1 sm:py-12">
+      <div className="col-span-2 md:col-span-1 sm:py-12">
         <BlogEntryGrid blogEntries={entryGridEntries} />
       </div>
     </section>

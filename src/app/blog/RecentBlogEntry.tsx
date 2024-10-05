@@ -34,10 +34,10 @@ export default function RecentBlogEntry({ blogEntry }: OwnProps) {
               {tag}
             </a>
           ))}
-          <h2 className="mb-5 text-3xl font-zodiak-bold sm:text-5xl">
+          <h2 className="mb-5 text-3xl font-zodiak-light uppercase overflow-clip sm:text-5xl">
             {title}
           </h2>
-          <p className="mb-2 text-md font-zodiak-regular text-purple-100 opacity-100 line-clamp-2 sm:text-lg">
+          <p className="mb-2 text-md font-zodiak-regular text-primary opacity-100 line-clamp-2 sm:text-lg">
             {description}
           </p>
         </div>
