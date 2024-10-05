@@ -22,7 +22,7 @@ export default function BlogSection({ fetchRecentBlogEntries } : OwnProps) {
 
   return (
     <section className="min-h-screen bg-brown-100 py-12 px-9 flex flex-col">
-      <div className="text-6xl text-center font-zodiak-bold mb-10 text-green">
+      <div className="text-6xl text-center font-zodiak-light uppercase mb-10 text-green">
         Blog
       </div>
       <div className="flex pl-8 flex-col lg:ml-auto justify-center border-l-8 border-primary text-primary lg:w-1/3">
