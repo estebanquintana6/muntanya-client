@@ -52,12 +52,17 @@
   font-style: normal;
 }
 
-.bg-header {
-  background: url(https://picsum.photos/1920/1920/?random) center center no-repeat;
-  background-attachment: fixed;
+.blog-grid {
+  display: grid;
+  grid-template-columns: 20% 78%;
+  grid-template-rows: minmax(auto, 85vh);
+  gap: 2%;
 }
 
-.bg-quote {
-  background: url(https://picsum.photos/1600/1600/?random) center center no-repeat;
-  background-attachment: fixed;
+.blog-entry-title {
+  font-size: calc((2 - 1)* 1.2vw + 1rem) !important;
+}
+
+.swiper-slide.blog-swiper-slide {
+  width: auto !important;
 }

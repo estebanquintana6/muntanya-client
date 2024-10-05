@@ -1,5 +1,7 @@
 import { getBlogEntryById } from "@/app/libs/blog";
 import BlogEntry from "./BlogEntry";
+import Navbar from "@/app/landing/shared/Navbar";
+
 import { notFound } from "next/navigation";
 
 interface OwnProps {
@@ -19,7 +21,10 @@ export default async function BlogEntryPage({ params }: OwnProps) {
 
   return (
     <main>
-      <BlogEntry blogEntry={blogEntry} />
+      <Navbar />
+      <main className="py-24 bg-primary">
+        <BlogEntry blogEntry={blogEntry} />
+      </main>
     </main>
   );
 }

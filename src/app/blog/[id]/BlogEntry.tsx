@@ -1,13 +1,19 @@
 "use client";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Scrollbar } from "swiper/modules";
+
 import { BlogEntry } from "@/app/utils/interfaces/blogEntry";
+
+import "swiper/css";
+import "swiper/css/pagination";
 
 interface OwnProps {
   blogEntry: BlogEntry;
 }
 
 export default function BlogEntryPage({ blogEntry }: OwnProps) {
-  const { title, subtitle, description, created_at } = blogEntry;
+  const { title, subtitle, description, photo_urls, created_at } = blogEntry;
 
   const dateOptions: Intl.DateTimeFormatOptions = {
     year: "numeric",
@@ -16,21 +22,49 @@ export default function BlogEntryPage({ blogEntry }: OwnProps) {
   };
 
   return (
-    <>
-      <header className="bg-header flex items-center justify-center h-screen pb-12">
-        <div className="font-zodiak-regular bg-primary mx-4 p-4 text-center md:p-8">
-          <p className="font-zodiak-italic text-sm">
-            {new Date(created_at).toLocaleDateString("es-MX", dateOptions)}
-          </p>
-          <h1 className="text-5xl uppercase">{title}</h1>
-          <p className="text-lg">Majo Gayou</p>
-        </div>
-      </header>
-
-      <div className="font-serif leading-normal mx-auto py-12 px-4 max-w-[50vw]">
-        <p className="mb-6 text-xl md:text-2xl uppercase">{subtitle}</p>
-        <p className="mb-4 text-lg whitespace-pre text-wrap">{description}</p>
+    <section className="blog-grid gap-8 w-full px-4 sm:px-12 pb-12">
+      <div className="flex flex-col">
+        <h1 className="uppercase blog-entry-title block break-words hyphens-auto text-brown-100 font-zodiak-light">
+          {title}
+        </h1>
+        <h2 className="text-sm block mt-2 break-words hyphens-auto border-b-2 border-brown-50 text-brown-100 font-zodiak-bold">
+          {new Date(created_at).toLocaleDateString("es-MX", dateOptions)}
+        </h2>
+        <h3 className="text-sm mt-4 break-words hyphens-auto font-zodiak-bold">
+          {subtitle}
+        </h3>
       </div>
-    </>
+      <div className="overflow-y-scroll flex flex-col px-12">
+        {photo_urls.length > 1 ? (
+          <Swiper
+            slidesPerView={"auto"}
+            spaceBetween={10}
+            scrollbar={{ draggable: true }}
+            modules={[Scrollbar]}
+            pagination={{
+              clickable: true,
+            }}
+            className="h-[60vh] w-full"
+          >
+            {photo_urls.map((url) => (
+              <SwiperSlide className="blog-swiper-slide w-auto">
+                <img src={url} className="h-full rounded-2xl" />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        ) : (
+          <div className="w-full h-[60vh]">
+            <img
+              src={photo_urls[0]}
+              className="w-full h-full object-cover rounded-2xl"
+            />
+          </div>
+        )}
+
+        <p className="text-md font-zodiak-regular text-justify text-brown-150 whitespace-pre-wrap flex-wrap mt-4">
+          {description}
+        </p>
+      </div>
+    </section>
   );
 }
