@@ -52,11 +52,13 @@
   font-style: normal;
 }
 
-.blog-grid {
-  display: grid;
-  grid-template-columns: 20% 78%;
-  grid-template-rows: minmax(auto, 85vh);
-  gap: 2%;
+@layer utilities {
+  .blog-grid {
+    display: grid;
+    grid-template-columns: 20% 78%;
+    grid-template-rows: minmax(auto, 85vh);
+    gap: 2%;
+  }
 }
 
 .blog-entry-title {

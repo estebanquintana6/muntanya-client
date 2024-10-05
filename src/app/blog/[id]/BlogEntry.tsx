@@ -22,19 +22,22 @@ export default function BlogEntryPage({ blogEntry }: OwnProps) {
   };
 
   return (
-    <section className="blog-grid gap-8 w-full h-screen px-4 sm:px-12 pb-12">
-      <div className="flex flex-col">
-        <h1 className="uppercase blog-entry-title block break-words hyphens-auto text-brown-100 font-zodiak-light">
+    <section className="gap-8 w-full md:h-screen px-4 sm:px-12 pb-12 sm:blog-grid">
+      <div className="flex flex-col mb-12 sm:mb-0">
+        <h1 className="uppercase text-4xl sm:blog-entry-title block break-words hyphens-auto pb-4 text-brown-100 font-zodiak-light">
           {title}
         </h1>
-        <h2 className="text-sm block mt-2 break-words hyphens-auto border-b-2 border-brown-50 text-brown-100 font-zodiak-bold">
-          {new Date(created_at).toLocaleDateString("es-MX", dateOptions)}
-        </h2>
+        <div className="flex border-b-2 border-brown-50 text-brown-100">
+          <span className="text-sm mr-auto block mt-2 break-words hyphens-auto font-zodiak-bold">Majo Gayou</span>
+          <h2 className="text-sm ml-auto block mt-2 break-words hyphens-auto font-zodiak-bold">
+            {new Date(created_at).toLocaleDateString("es-MX", dateOptions)}
+          </h2>
+        </div>
         <h3 className="text-sm mt-4 break-words hyphens-auto font-zodiak-bold">
           {subtitle}
         </h3>
       </div>
-      <div className="overflow-y-scroll flex flex-col px-12">
+      <div className="overflow-y-scroll flex flex-col sm:px-12">
         {photo_urls.length > 1 ? (
           <Swiper
             slidesPerView={"auto"}
