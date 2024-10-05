@@ -29,14 +29,14 @@ export default function GalleryItem({ product }: OwnProps) {
         <div className="my-4 flex flex-row flex-wrap w-full gap-2">
           {tags.map((tag) => (
             <span
-              className="text-sm text-nowrap text-primary font-zodiak-regular p-2 border-2 border-primary rounded-2xl"
+              className="text-sm text-nowrap text-primary font-zodiak-regular p-2 border-2 border-green rounded-2xl"
               key={tag}
             >
               {tag}
             </span>
           ))}
         </div>
-        <h1 className="text-3xl font-zodiak-bold text-primary">{title}</h1>
+        <h1 className="text-3xl font-zodiak-light text-primary uppercase">{title}</h1>
         <p className="text-md font-zodiak-regular text-primary line-clamp-3">
           {description}
         </p>

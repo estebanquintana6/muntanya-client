@@ -12,7 +12,7 @@ export default function ProductView({ product }: OwnProps) {
   return (
     <section className="min-h-screen">
       <div className="px-4 sm:px-10 py-10 sm:py-20">
-        <h1 className="text-5xl sm:text-6xl smd:text-7xl lg:text-8xl font-zodiak-bold text-brown-100">
+        <h1 className="text-5xl sm:text-6xl smd:text-7xl lg:text-8xl font-zodiak-light uppercase text-brown-100">
           {title}
         </h1>
         <div className="flex flex-row flex-wrap w-full mt-6 gap-4">

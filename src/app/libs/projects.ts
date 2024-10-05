@@ -5,7 +5,14 @@ import { Product } from "../utils/interfaces/product";
 
 export async function getProducts(): Promise<Product[]> {
   try {
-    const { data } = await axios.get(`${process.env.SERVER_URL}/products`);
+    const { data } = await axios.get(`${process.env.SERVER_URL}/products`, {
+      // query URL without using browser cache
+      headers: {
+        'Cache-Control': 'no-cache',
+        'Pragma': 'no-cache',
+        'Expires': '0',
+      },
+    });
     return data;
   } catch {
     console.error("Error al obtener los productos");

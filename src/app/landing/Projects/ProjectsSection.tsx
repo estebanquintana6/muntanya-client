@@ -54,13 +54,13 @@ export default function ProjectsSection({ favorites }: OwnProps) {
               <div
                 className={`h-full w-full py-8 ${index % 2 ? "sm:border-l-4" : "sm:border-r-4"} sm:border-brown-100 sm:w-1/2 sm:p-8`}
               >
-                <h1 className="text-3xl text-brown-50 font-zodiak-bold">
+                <h1 className="text-3xl text-brown-50 font-zodiak-light uppercase">
                   {title}
                 </h1>
                 <h2 className="text-xl text-brown-25 font-zodiak-bold mt-8">
                   {subtitle}
                 </h2>
-                <p className="text-md text-brown-100 font-zodiak-regular whitespace-pre text-wrap line-clamp-[12] sm:line-clamp-[20]">
+                <p className="text-md text-brown-100 text-justify font-zodiak-regular whitespace-pre text-wrap line-clamp-[12] sm:line-clamp-[20]">
                   {description}
                 </p>
               </div>
