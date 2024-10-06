@@ -37,7 +37,7 @@ export default function ContactSection() {
               Contacta con nosotros
             </h1>
           </div>
-          <div className="flex flex-col p-8 gap-4 sm:gap-8 sm:items-center sm:justify-center sm:p-12 sm:flex-row">
+          <div className="grid grid-cols-2 p-8 gap-4 sm:flex sm:gap-8 sm:items-center sm:justify-center sm:p-12 sm:flex-row">
             {/*<ContactButton title="Whatsapp">
               <img src="/icons/whatsapp.svg" className="h-12" />
   </ContactButton>*/}
