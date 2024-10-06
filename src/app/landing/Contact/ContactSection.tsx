@@ -12,7 +12,7 @@ export default function ContactSection() {
               Cotiza tu proyecto
             </h1>
           </div>
-          <div className="p-8 sm:p-12 flex items-center justify-center">
+          <div className="p-8 sm:p-12 grid grid-col-1 sm:flex sm:items-center sm:justify-center">
             <ContactButton title="Ir al cotizador" href="/cotizador">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
