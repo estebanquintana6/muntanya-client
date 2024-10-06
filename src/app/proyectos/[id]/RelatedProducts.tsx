@@ -17,7 +17,7 @@ export default function RelatedProducts({ related }: OwnProps) {
         {related.map((product) => {
           const { _id, title, photo_urls } = product;
           return (
-            <div className="col-span-1 relative" key={`project-${_id}`}>
+            <div className="col-span-1 relative h-96" key={`project-${_id}`}>
               <Link href={`/proyectos/${_id}`}>
                 <div className="bg-black bg-opacity-50 absolute top-0 w-full h-full rounded-2xl flex">
                   <h2 className="text-xl text-primary m-auto font-zodiak-light uppercase sm:text-2xl">
@@ -27,7 +27,7 @@ export default function RelatedProducts({ related }: OwnProps) {
                 <img
                   src={photo_urls[0]}
                   alt={title}
-                  className="h-full object-cover rounded-2xl"
+                  className="h-full w-full object-cover rounded-2xl"
                 />
               </Link>
             </div>
