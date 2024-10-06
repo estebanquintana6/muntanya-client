@@ -1,5 +1,5 @@
 "use client";
-
+import { useState } from "react";
 import Link from "next/link";
 
 interface OwnProps {
@@ -13,10 +13,17 @@ export default function ContactButton({
   title = "",
   href = "#",
 }: OwnProps) {
+
+  const [isHover, setIsHover] = useState(false);
+
+  const onHover = () => setIsHover(true);
+
+  const onHoverOut = () => setIsHover(false);
+
   return (
-    <Link href={href}>
+    <Link href={href} onMouseEnter={onHover} onMouseLeave={onHoverOut}>
       <button className="group flex-col w-full h-36 sm:w-72 sm:h-72 flex justify-center items-center gap-6 px-4 py-2 bg-primary text-black font-mono font-semibold text-xl relative overflow-hidden rounded-xl border-4 border-black hover:shadow-[0px_0px_0px_#000] transition-all duration-200 sm:px-6 sm:py-2">
-        <div className="w-8 sm:w-12 border-brown-100 flex justify-center items-center z-[1] transition-all duration-200 relative overflow-hidden">
+        <div className={`${isHover ? 'text-primary' : 'text-brown-150'} w-8 sm:w-12 border-brown-100 flex justify-center items-center z-[1] transition-all duration-200 relative overflow-hidden`}>
           {children}
         </div>
         <div className="relative overflow-hidden z-[1] transition-all duration-200">
