@@ -1,9 +1,9 @@
 "use client";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 
+import { successModal, errorModal } from "../utils/alerts";
 
 export default function ContactForm() {
-
   const [name, setName] = useState<string>("");
   const [lastname, setLastname] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -16,14 +16,52 @@ export default function ContactForm() {
   const handleServiceChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     if (services.includes(value)) {
-        setServices((prev) => prev.filter((v) => v !== value));
+      setServices((prev) => prev.filter((v) => v !== value));
     } else {
-        setServices([...services, value]);
+      setServices([...services, value]);
     }
-  }
+  };
+
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const body = {
+      name,
+      lastname,
+      email,
+      phone,
+      instagram,
+      knowMethod,
+      services,
+      description,
+    };
+
+    try {
+      const res = await fetch("/api/cotizador/create", {
+        method: "POST",
+        body: JSON.stringify(body),
+      });
+
+      const { status } = res;
+
+      if (status === 200) {
+        successModal(
+          "Gracias por ponerte en contacto con nosotros. Nos comunicaremos contigo brevemente",
+        );
+      } else {
+        errorModal(
+          "Estamos teniendo fallas con nuestro servicio, intenta más tarde",
+        );
+      }
+    } catch (e) {
+      errorModal(
+        "Estamos teniendo fallas con nuestro servicio, intenta más tarde",
+      );
+    }
+  };
 
   return (
-    <form className="w-full">
+    <form className="w-full" onSubmit={(e) => onSubmit(e)}>
       <h3 className="text-md text-brown-100 font-zodiak-bold mb-2">
         Nombre (obligatorio)
       </h3>
@@ -160,7 +198,9 @@ export default function ContactForm() {
                   htmlFor="service-checkbox-laminas"
                   className="ms-2 text-sm font-zodiak-regular text-gray-900 dark:text-gray-300"
                 >
-                  <span className={`p-3 cursor-pointer rounded-md ${services.includes("laminas") ? 'bg-brown-100 text-primary' : 'bg-primary text-brown-100'}  border-2 border-brown-100`}>
+                  <span
+                    className={`p-3 cursor-pointer rounded-md ${services.includes("laminas") ? "bg-brown-100 text-primary" : "bg-primary text-brown-100"}  border-2 border-brown-100`}
+                  >
                     Compra de láminas biomateriales
                   </span>
                 </label>
@@ -179,7 +219,9 @@ export default function ContactForm() {
                   htmlFor="service-checkbox-desarrollo"
                   className="ms-2 text-sm font-zodiak-regular text-gray-900 dark:text-gray-300"
                 >
-                  <span className={`p-3 cursor-pointer rounded-md ${services.includes("desarrollo") ? 'bg-brown-100 text-primary' : 'bg-primary text-brown-100'}  border-2 border-brown-100`}>
+                  <span
+                    className={`p-3 cursor-pointer rounded-md ${services.includes("desarrollo") ? "bg-brown-100 text-primary" : "bg-primary text-brown-100"}  border-2 border-brown-100`}
+                  >
                     Desarrollo y diseño de proyecto
                   </span>
                 </label>
@@ -198,7 +240,9 @@ export default function ContactForm() {
                   htmlFor="service-checkbox-producto-personalizado"
                   className="ms-2 text-sm font-zodiak-regular text-gray-900 dark:text-gray-300"
                 >
-                  <span className={`p-3 cursor-pointer rounded-md ${services.includes("producto-personalizado") ? 'bg-brown-100 text-primary' : 'bg-primary text-brown-100'}  border-2 border-brown-100`}>
+                  <span
+                    className={`p-3 cursor-pointer rounded-md ${services.includes("producto-personalizado") ? "bg-brown-100 text-primary" : "bg-primary text-brown-100"}  border-2 border-brown-100`}
+                  >
                     Producto personalizado
                   </span>
                 </label>
@@ -217,7 +261,9 @@ export default function ContactForm() {
                   htmlFor="service-checkbox-colaboracion"
                   className="ms-2 text-sm font-zodiak-regular text-gray-900 dark:text-gray-300"
                 >
-                  <span className={`p-3 cursor-pointer rounded-md ${services.includes("colaboracion") ? 'bg-brown-100 text-primary' : 'bg-primary text-brown-100'}  border-2 border-brown-100`}>
+                  <span
+                    className={`p-3 cursor-pointer rounded-md ${services.includes("colaboracion") ? "bg-brown-100 text-primary" : "bg-primary text-brown-100"}  border-2 border-brown-100`}
+                  >
                     Colaboración
                   </span>
                 </label>
@@ -244,17 +290,17 @@ export default function ContactForm() {
       </div>
 
       <div>
-      <button className="group flex-col h-12 w-full sm:w-96 flex justify-center items-center gap-2 sm:gap-6 px-4 py-2 bg-primary text-black font-mono font-semibold text-xl relative overflow-hidden rounded-xl border-2 border-black hover:shadow-[0px_0px_0px_#000] transition-all duration-200 sm:px-6 sm:py-2">
-        <div className="relative overflow-hidden z-[1] transition-all duration-200">
-          <span className="group-hover:translate-y-full text-md font-zodiak-regular inline-block transition-all duration-200">
-            Solicitar información
-          </span>
-          <span className="absolute inset-0 text-md font-zodiak-regular text-primary -translate-y-full group-hover:translate-y-0 inline-block transition-all duration-200">
-          Solicitar información
-          </span>
-        </div>
-        <div className="absolute inset-0 bg-brown-100 -translate-y-full group-hover:translate-y-0 transition-transform duration-200 z-0"></div>
-      </button>
+        <button className="group flex-col h-12 w-full sm:w-96 flex justify-center items-center gap-2 sm:gap-6 px-4 py-2 bg-primary text-black font-mono font-semibold text-xl relative overflow-hidden rounded-xl border-2 border-black hover:shadow-[0px_0px_0px_#000] transition-all duration-200 sm:px-6 sm:py-2">
+          <div className="relative overflow-hidden z-[1] transition-all duration-200">
+            <span className="group-hover:translate-y-full text-md font-zodiak-regular inline-block transition-all duration-200">
+              Solicitar información
+            </span>
+            <span className="absolute inset-0 text-md font-zodiak-regular text-primary -translate-y-full group-hover:translate-y-0 inline-block transition-all duration-200">
+              Solicitar información
+            </span>
+          </div>
+          <div className="absolute inset-0 bg-brown-100 -translate-y-full group-hover:translate-y-0 transition-transform duration-200 z-0"></div>
+        </button>
       </div>
     </form>
   );

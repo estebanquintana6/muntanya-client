@@ -2,7 +2,7 @@ import Swal from "sweetalert2";
 
 export const successModal = (text: string) => {
   Swal.fire({
-    title: "Èxito!",
+    title: "Éxito!",
     text: text,
     icon: "success",
   });
