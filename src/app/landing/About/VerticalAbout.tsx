@@ -12,7 +12,7 @@ export default function VerticalAbout() {
                             <h1 className="text-5xl sm:text-6xl font-zodiak-light text-primary text-center uppercase align-middle">¿QUIÉNES SOMOS?</h1>
                         </div>
                         <div className="h-full hidden sm:block border-l-4 border-primary" />
-                        <h3 className="w-full text-xl sm:text-2xl text-md text-primary font-zodiak-regular mt-6 ml-4 mr-auto text-justify sm:w-1/2 sm:mt-0">
+                        <h3 className="w-full text-xl sm:text-2xl text-md text-primary font-zodiak-regular mr-auto text-justify sm:w-1/2 sm:mx-auto sm:ml-4">
                             Somos un estudio de diseño circular en México, comprometido con transformar residuos orgánicos industriales en biomateriales innovadores
                             y biodegradables. Inspirados en ciclos naturales. Creamos produtos radicales que impulsan sistemas industriales más sostenibles, eliminando
                             la necesidad de extraer materias primas virgenes y reintegrando los desechos en un ciclo natural.

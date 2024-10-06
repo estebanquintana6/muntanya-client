@@ -23,18 +23,20 @@ export default function RelatedEntries({ related }: OwnProps) {
         {related.map((entry) => {
           const { _id, title, photo_urls, created_at } = entry;
           return (
-            <div className="col-span-1 relative h-96" key={`project-${_id}`}>
+            <div className="col-span-1 relative h-64 sm:h-96" key={`project-${_id}`}>
               <Link href={`/proyectos/${_id}`}>
                 <div className="bg-black bg-opacity-50 absolute top-0 w-full h-full rounded-2xl flex flex-col">
-                  <h2 className="text-xl text-green mt-auto mx-auto font-zodiak-light uppercase sm:text-2xl">
+                <div className="overflow-clip my-auto">
+                  <h2 className="text-xl text-green text-center mx-auto font-zodiak-light uppercase sm:text-2xl">
                     {title}
                   </h2>
-                  <h3 className="text-xl text-primary mb-auto mx-auto font-zodiak-regular uppercase sm:text-sm">
+                  <h3 className="text-sm text-primary text-center mx-auto font-zodiak-regular uppercase">
                     {new Date(created_at).toLocaleDateString(
                       "es-MX",
                       dateOptions,
                     )}
                   </h3>
+                  </div>
                 </div>
                 <img
                   src={photo_urls[0]}
