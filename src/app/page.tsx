@@ -3,6 +3,7 @@ import Header from "./landing/Header";
 import About from "./landing/About";
 import ProjectsSection from "./landing/Projects/ProjectsSection";
 import BlogSection from "./landing/Blog/BlogSection";
+import ContactSection from "./landing/Contact/ContactSection";
 import Footer from "./landing/shared/Footer";
 
 import { getRecentBlogEntries } from "./libs/blog";
@@ -24,6 +25,7 @@ export default async function Home() {
         <About />
         <ProjectsSection favorites={favoriteProducts} />
         <BlogSection fetchRecentBlogEntries={fetchRecentBlogEntries} />
+        <ContactSection />
       </main>
       <Footer />
     </>
