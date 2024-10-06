@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import LandingPageButton from "../shared/LandingPageBtn";
 import ProjectSwiper from "./ProjectSwiper";
 
@@ -43,7 +44,8 @@ export default function ProjectsSection({ favorites }: OwnProps) {
               className={`w-full flex flex-col-reverse ${index % 2 ? "sm:flex-row" : "sm:flex-row-reverse"} gap-x-8 my-12 sm:h-[70vh]`}
               key={_id}
             >
-              <div className="h-full w-full sm:w-1/2">
+              <div className="h-full w-full relative sm:w-1/2">
+                <Link href={`/proyectos/${_id}`} className="absolute w-full h-full top-0" />
                 <img
                   src={photo_urls[0]}
                   className="object-cover h-full w-full rounded-2xl"
