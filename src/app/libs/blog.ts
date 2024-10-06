@@ -32,6 +32,15 @@ export async function getBlogEntryById(id: string): Promise<BlogEntry | null> {
   }
 }
 
+export async function getRelatedById(id: string): Promise<BlogEntry[]> {
+  try {
+    const { data } = await axios.get(`${process.env.SERVER_URL}/blog/related/${id}`);
+    return data;
+  } catch (e) {
+    return [];
+  }
+}
+
 export async function deleteBlogEntry(_id: string) {
   try {
     const { data } = await axios.delete(
