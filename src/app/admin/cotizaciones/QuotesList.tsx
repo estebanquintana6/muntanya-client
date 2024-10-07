@@ -1,5 +1,5 @@
 "use client";
-import { Quote } from "@/app/utils/interfaces/quote";
+import { Quote, quoteKeyMap } from "@/app/utils/interfaces/quote";
 
 interface OwnProps {
   quotes: Quote[];
@@ -13,7 +13,7 @@ const dateOptions: Intl.DateTimeFormatOptions = {
 
 export default function QuotesList({ quotes }: OwnProps) {
   return (
-    <div className="w-[60vw] mx-auto my-10 bg-white p-8 rounded-xl shadow shadow-slate-300">
+    <div className="w-full sm:w-[70vw] mx-auto my-10 bg-white p-8 rounded-xl shadow shadow-slate-300">
       <div className="flex flex-row justify-between items-center">
         <div>
           <h1 className="text-3xl font-medium">Lista de contactos</h1>
@@ -66,7 +66,7 @@ export default function QuotesList({ quotes }: OwnProps) {
           </div>
         </div>
         */}
-        {quotes.map(({ _id, name, lastname, created_at, attended }) => (
+        {quotes.map(({ _id, name, lastname, created_at, services, attended }) => (
           <div
             id={`task-${_id}`}
             key={_id}
@@ -91,11 +91,14 @@ export default function QuotesList({ quotes }: OwnProps) {
               </div>
               <div className="flex">
                 <span className="text-md font-zodiak-regular text-brown-100 mr-8">{`${name} ${lastname}`}</span>
-                <span className="text-md font-zodiak-regular text-brown-100">
+                <span className="text-md font-zodiak-regular text-brown-100 mr-8">
                   {new Date(created_at).toLocaleDateString(
                     "es-MX",
                     dateOptions,
                   )}
+                </span>
+                <span className="text-md font-zodiak-regular text-brown-100">
+                  {services.map((s) => quoteKeyMap[s]).join(", ")}
                 </span>
               </div>
             </div>

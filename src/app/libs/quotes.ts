@@ -8,10 +8,10 @@ export async function getQuotes(): Promise<Quote[]> {
     const { data } = await axios.get(`${process.env.SERVER_URL}/quoter`, {
       // query URL without using browser cache
       headers: {
-         'Authorization': cookies().get("session")?.value,
-        'Cache-Control': 'no-cache',
-        'Pragma': 'no-cache',
-        'Expires': '0',
+        Authorization: cookies().get("session")?.value,
+        "Cache-Control": "no-cache",
+        Pragma: "no-cache",
+        Expires: "0",
       },
     });
     return data;
