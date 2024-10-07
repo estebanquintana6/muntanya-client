@@ -69,6 +69,7 @@ export default function QuotesList({ quotes }: OwnProps) {
         {quotes.map(({ _id, name, lastname, created_at, attended }) => (
           <div
             id={`task-${_id}`}
+            key={_id}
             className="flex justify-between items-center border-b border-slate-200 py-3 px-2 border-l-4  border-l-transparent bg-gradient-to-r from-transparent to-transparent hover:from-slate-100 transition ease-linear duration-150"
           >
             <div className="inline-flex items-center space-x-2">
