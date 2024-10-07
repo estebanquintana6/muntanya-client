@@ -8,7 +8,7 @@ export default async function Cotizador() {
       <main className="flex flex-col bg-primary min-h-screen px-8 py-16 sm:p-24">
         <div className="w-full flex flex-col px-2 sm:px-16 sm:flex-row">
           <div className="w-full sm:w-1/2">
-            <h1 className="text-4xl sm:text-6xl font-zodiak-light uppercase text-brown-100">
+            <h1 className="text-4xl lg:text-6xl font-zodiak-light uppercase text-brown-100">
               Neque porro quisquam est qui dolorem
             </h1>
           </div>

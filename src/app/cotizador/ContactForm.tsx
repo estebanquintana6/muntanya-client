@@ -65,8 +65,8 @@ export default function ContactForm() {
       <h3 className="text-md text-brown-100 font-zodiak-bold mb-2">
         Nombre (obligatorio)
       </h3>
-      <div className="flex flex-col gap-x-8 mb-2 sm:flex-row">
-        <div className="mb-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 w-full md:w-2/3 gap-x-8 mb-2 sm:flex-row">
+        <div className="mb-5 w-full">
           <label
             htmlFor="name"
             className="block mb-2 text-sm font-zodiak-regular text-brown-100"
@@ -78,7 +78,7 @@ export default function ContactForm() {
             onChange={(e) => setName(e.target.value)}
             type="name"
             id="name"
-            className="bg-gray-50 border border-brown-100 text-brown-150 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 w-full sm:w-96"
+            className="bg-gray-50 border border-brown-100 text-brown-150 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 w-full"
             placeholder="Nombre"
             required
           />
@@ -95,7 +95,7 @@ export default function ContactForm() {
             onChange={(e) => setLastname(e.target.value)}
             type="last_name"
             id="last_name"
-            className="bg-gray-50 border border-brown-100 text-brown-150 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 w-full sm:w-96"
+            className="bg-gray-50 border border-brown-100 text-brown-150 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 w-full"
             placeholder="Apellido(s)"
             required
           />
@@ -105,7 +105,7 @@ export default function ContactForm() {
       <h3 className="text-brown-100 font-zodiak-bold mb-2">
         Contacto (obligatorio)
       </h3>
-      <div className="flex flex-col gap-x-8 sm:flex-row">
+      <div className="grid grid-cols-1 md:grid-cols-3 w-full md:w-5/6 gap-x-8 sm:flex-row">
         <div className="mb-5">
           <label
             htmlFor="email"
@@ -118,7 +118,7 @@ export default function ContactForm() {
             onChange={(e) => setEmail(e.target.value)}
             type="email"
             id="email"
-            className="bg-gray-50 border border-brown-100 text-brown-150 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 w-full sm:w-96"
+            className="bg-gray-50 border border-brown-100 text-brown-150 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 w-full"
             placeholder="name@ejemplo.com"
             required
           />
@@ -135,7 +135,7 @@ export default function ContactForm() {
             onChange={(e) => setPhone(e.target.value)}
             type="phone"
             id="phone"
-            className="bg-gray-50 border border-brown-100 text-brown-150 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 w-full sm:w-96"
+            className="bg-gray-50 border border-brown-100 text-brown-150 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 w-full"
             placeholder="XXX-XXXX-XXX"
             required
           />
@@ -152,7 +152,7 @@ export default function ContactForm() {
             onChange={(e) => setInstagram(e.target.value)}
             type="instagram"
             id="instagram"
-            className="bg-gray-50 border border-brown-100 text-brown-150 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 w-full sm:w-96"
+            className="bg-gray-50 border border-brown-100 text-brown-150 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 w-full"
             placeholder="@"
           />
         </div>
@@ -182,9 +182,9 @@ export default function ContactForm() {
         Selecciona el servicio que te interesa
       </h3>
       <fieldset id="service">
-        <div className="flex flex-col gap-x-8 sm:flex-row">
+        <div className="flex flex-col gap-x-8 lg:flex-row">
           <div className="my-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 items-center mb-4 gap-y-12 gap-x-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 items-center mb-4 gap-y-12 gap-x-8">
               <div>
                 <input
                   id="service-checkbox-laminas"
