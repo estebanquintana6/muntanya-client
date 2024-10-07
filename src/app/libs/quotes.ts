@@ -21,7 +21,7 @@ export async function getQuotes(): Promise<Quote[]> {
   }
 }
 
-export async function getQuoteById(id: string): Promise<Quote> {
+export async function getQuoteById(id: string): Promise<Quote | null> {
   try {
     const { data } = await axios.get(`${process.env.SERVER_URL}/quoter/${id}`, {
       // query URL without using browser cache
@@ -35,6 +35,6 @@ export async function getQuoteById(id: string): Promise<Quote> {
     return data;
   } catch {
     console.error("Error al obtener los contactos");
-    return [];
+    return null;
   }
 }

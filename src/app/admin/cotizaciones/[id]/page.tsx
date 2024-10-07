@@ -1,5 +1,6 @@
 import QuotePreview from "./QuotePreview";
 import { getQuoteById } from "@/app/libs/quotes"
+import { notFound } from "next/navigation";
 
 interface OwnProps {
     params: {
@@ -10,6 +11,10 @@ interface OwnProps {
 export default async function QuotePreviewPage({ params }: OwnProps) {
     const { id } = params;
     const quote = await getQuoteById(id);
+
+    if (!quote) {
+      notFound();
+    }
 
     return (
         <main>
