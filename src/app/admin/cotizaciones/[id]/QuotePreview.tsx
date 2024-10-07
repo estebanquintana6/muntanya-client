@@ -23,8 +23,8 @@ export default function QuotePreview({ quote }: OwnProps) {
       <h3 className="text-md text-brown-100 font-zodiak-bold mb-2">
         Nombre (obligatorio)
       </h3>
-      <div className="flex flex-col gap-x-8 mb-2 sm:flex-row">
-        <div className="mb-5">
+      <div className="grid grid-cols-2 gap-x-2 mb-2 sm:flex-row w-2/3">
+        <div className="mb-5 w-full">
           <label
             htmlFor="name"
             className="block mb-2 text-sm font-zodiak-regular text-brown-100"
@@ -36,7 +36,7 @@ export default function QuotePreview({ quote }: OwnProps) {
             disabled
             type="name"
             id="name"
-            className="bg-gray-50 border border-brown-100 text-brown-150 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 w-full sm:w-96"
+            className="bg-gray-50 border border-brown-100 text-brown-150 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 w-full"
             placeholder="Nombre"
             required
           />
@@ -53,7 +53,7 @@ export default function QuotePreview({ quote }: OwnProps) {
             disabled
             type="last_name"
             id="last_name"
-            className="bg-gray-50 border border-brown-100 text-brown-150 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 w-full sm:w-96"
+            className="bg-gray-50 border border-brown-100 text-brown-150 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 w-full"
             placeholder="Apellido(s)"
             required
           />
@@ -63,7 +63,7 @@ export default function QuotePreview({ quote }: OwnProps) {
       <h3 className="text-brown-100 font-zodiak-bold mb-2">
         Contacto (obligatorio)
       </h3>
-      <div className="flex flex-col gap-x-8 sm:flex-row">
+      <div className="grid grid-cols-3 gap-x-2 sm:flex-row w-full">
         <div className="mb-5">
           <label
             htmlFor="email"
@@ -76,7 +76,7 @@ export default function QuotePreview({ quote }: OwnProps) {
             disabled
             type="email"
             id="email"
-            className="bg-gray-50 border border-brown-100 text-brown-150 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 w-full sm:w-96"
+            className="bg-gray-50 border border-brown-100 text-brown-150 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 w-full"
             placeholder="name@ejemplo.com"
             required
           />
@@ -93,7 +93,7 @@ export default function QuotePreview({ quote }: OwnProps) {
             disabled
             type="phone"
             id="phone"
-            className="bg-gray-50 border border-brown-100 text-brown-150 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 w-full sm:w-96"
+            className="bg-gray-50 border border-brown-100 text-brown-150 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 w-full"
             placeholder="XXX-XXXX-XXX"
             required
           />
@@ -110,7 +110,7 @@ export default function QuotePreview({ quote }: OwnProps) {
             disabled
             type="instagram"
             id="instagram"
-            className="bg-gray-50 border border-brown-100 text-brown-150 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 w-full sm:w-96"
+            className="bg-gray-50 border border-brown-100 text-brown-150 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 w-full"
             placeholder="@"
           />
         </div>
@@ -119,13 +119,13 @@ export default function QuotePreview({ quote }: OwnProps) {
       <h3 className="text-brown-100 font-zodiak-bold mb-2">
         ¿Cómo descubriste Muntanya?
       </h3>
-      <div className="flex flex-col gap-x-8 sm:flex-row">
+      <div className="grid grid-cols-1 gap-x-8 sm:flex-row w-96">
         <div className="mb-5">
           <select
             id="email"
             value={knowMethod}
             disabled
-            className="bg-gray-50 border border-brown-100 text-brown-150 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 w-full sm:w-96"
+            className="bg-gray-50 border border-brown-100 text-brown-150 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 w-full"
           >
             <option></option>
             <option value="google">Google</option>
@@ -140,7 +140,7 @@ export default function QuotePreview({ quote }: OwnProps) {
         Selecciona el servicio que te interesa
       </h3>
       <fieldset id="service">
-        <div className="flex flex-col gap-x-8 sm:flex-row">
+        <div className="flex flex-col sm:flex-row">
           <div className="my-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 items-center mb-4 gap-y-12 gap-x-8">
               <div>
