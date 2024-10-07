@@ -1,5 +1,6 @@
 "use client";
 import { Quote, quoteKeyMap } from "@/app/utils/interfaces/quote";
+import { useRouter } from "next/navigation";
 
 interface OwnProps {
   quotes: Quote[];
@@ -12,6 +13,12 @@ const dateOptions: Intl.DateTimeFormatOptions = {
 };
 
 export default function QuotesList({ quotes }: OwnProps) {
+  const router = useRouter();
+
+  const handleViewQuote = (id: string) => {
+    router.push(`/admin/cotizaciones/${id}`);
+  }
+
   return (
     <div className="w-full sm:w-[70vw] mx-auto my-10 bg-white p-8 rounded-xl shadow shadow-slate-300">
       <div className="flex flex-row justify-between items-center">
@@ -103,7 +110,7 @@ export default function QuotesList({ quotes }: OwnProps) {
               </div>
             </div>
             <div className="flex gap-x-4">
-              <div>
+              <div onClick={() => handleViewQuote(_id)}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"

@@ -5,8 +5,8 @@ export default async function QuotesPanel() {
   const contacts = await getQuotes();
 
   return (
-    <div>
+    <main>
       <QuotesList quotes={contacts} />
-    </div>
+    </main>
   );
 }
