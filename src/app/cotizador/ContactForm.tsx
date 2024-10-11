@@ -290,7 +290,7 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <button className="group flex-col h-12 w-full sm:w-96 flex justify-center items-center gap-2 sm:gap-6 px-4 py-2 bg-primary text-black font-mono font-semibold text-xl relative overflow-hidden rounded-xl border-2 border-black hover:shadow-[0px_0px_0px_#000] transition-all duration-200 sm:px-6 sm:py-2">
+        <button className="quoter-btn group flex-col h-12 w-full sm:w-96 flex justify-center items-center gap-2 sm:gap-6 px-4 py-2 bg-primary text-black font-mono font-semibold text-xl relative overflow-hidden rounded-xl border-2 border-black hover:shadow-[0px_0px_0px_#000] transition-all duration-200 sm:px-6 sm:py-2">
           <div className="relative overflow-hidden z-[1] transition-all duration-200">
             <span className="group-hover:translate-y-full text-md font-zodiak-regular inline-block transition-all duration-200">
               Solicitar información

@@ -1,9 +1,10 @@
 "use client";
 import { Quote, quoteKeyMap } from "@/app/utils/interfaces/quote";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 interface OwnProps {
-  quotes: Quote[];
+  getQuotes: () => Promise<Quote[]>;
 }
 
 const dateOptions: Intl.DateTimeFormatOptions = {
@@ -12,11 +13,37 @@ const dateOptions: Intl.DateTimeFormatOptions = {
   day: "numeric",
 };
 
-export default function QuotesList({ quotes }: OwnProps) {
+export default function QuotesList({ getQuotes }: OwnProps) {
+  const [quotes, setQuotes] = useState<Quote[]>([]);
   const router = useRouter();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getQuotes();
+      setQuotes(data);
+    }
+    fetchData();
+  }, []);
 
   const handleViewQuote = (id: string) => {
     router.push(`/admin/cotizaciones/${id}`);
+  }
+
+  const handleAttendBtn = async (id: string, attended: boolean) => {
+    const res = await fetch("/api/cotizador/attend", {
+      method: "POST",
+      body: JSON.stringify({
+        id,
+        attended
+      }),
+    });
+
+    const { status } = res;
+
+    if (status === 200) {
+      const updatedData = await getQuotes();
+      setQuotes(updatedData);
+    }
   }
 
   return (
@@ -87,6 +114,7 @@ export default function QuotesList({ quotes }: OwnProps) {
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
                   stroke="currentColor"
+                  onClick={() => handleAttendBtn(_id, !attended)}
                   className="w-6 h-6 text-slate-500 hover:text-indigo-600 hover:cursor-pointer"
                 >
                   <path
@@ -96,7 +124,7 @@ export default function QuotesList({ quotes }: OwnProps) {
                   />
                 </svg>
               </div>
-              <div className="flex">
+              <div className={`flex ${attended && 'line-through'}`}>
                 <span className="text-md font-zodiak-regular text-brown-100 mr-8">{`${name} ${lastname}`}</span>
                 <span className="text-md font-zodiak-regular text-brown-100 mr-8">
                   {new Date(created_at).toLocaleDateString(
