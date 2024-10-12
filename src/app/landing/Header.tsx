@@ -56,7 +56,7 @@ export default function Header() {
   return (
     <div
       ref={headerRef}
-      className="w-full relative h-screen bg-primary flex px-6 sm:px-0 dvd-box overflow-hidden"
+      className="w-full relative h-[90vh] bg-primary flex px-6 sm:px-0 dvd-box overflow-hidden"
     >
       <img
         key={imgSrc}
