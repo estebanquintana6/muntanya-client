@@ -16,7 +16,7 @@ export default function RelatedEntries({ related }: OwnProps) {
 
   return (
     <section className="w-full px-6 py-12 sm:px-12  bg-brown-25">
-      <h1 className="text-2xl text-primary font-zodiak-bold mb-6 sm:text-3xl">
+      <h1 className="text-2xl text-primary font-zodiak-light uppercase mb-6 sm:text-3xl">
         Entradas relacionadas
       </h1>
       <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">

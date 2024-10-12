@@ -2,9 +2,11 @@
 import { Quote, quoteKeyMap } from "@/app/utils/interfaces/quote";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { deleteWarningModal } from "@/app/utils/alerts";
 
 interface OwnProps {
   getQuotes: () => Promise<Quote[]>;
+  deleteQuote: (id: string) => Promise<void>;
 }
 
 const dateOptions: Intl.DateTimeFormatOptions = {
@@ -13,15 +15,16 @@ const dateOptions: Intl.DateTimeFormatOptions = {
   day: "numeric",
 };
 
-export default function QuotesList({ getQuotes }: OwnProps) {
+export default function QuotesList({ getQuotes, deleteQuote }: OwnProps) {
   const [quotes, setQuotes] = useState<Quote[]>([]);
   const router = useRouter();
 
+  const fetchData = async () => {
+    const data = await getQuotes();
+    setQuotes(data);
+  }
+
   useEffect(() => {
-    const fetchData = async () => {
-      const data = await getQuotes();
-      setQuotes(data);
-    }
     fetchData();
   }, []);
 
@@ -41,9 +44,20 @@ export default function QuotesList({ getQuotes }: OwnProps) {
     const { status } = res;
 
     if (status === 200) {
-      const updatedData = await getQuotes();
-      setQuotes(updatedData);
+      await fetchData();
     }
+  }
+
+  const handleDeleteQuote = async (id: string) => {
+    deleteWarningModal({
+      title: 'esta cotización',
+      confirmCb: async () => {
+        await deleteQuote(id);
+      },
+      finallyCb: async () => {
+        await fetchData();
+      }
+    })
   }
 
   return (
@@ -159,7 +173,7 @@ export default function QuotesList({ getQuotes }: OwnProps) {
                   />
                 </svg>
               </div>
-              <div>
+              <div onClick={() => handleDeleteQuote(_id)}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"

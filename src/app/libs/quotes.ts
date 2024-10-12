@@ -38,3 +38,21 @@ export async function getQuoteById(id: string): Promise<Quote | null> {
     return null;
   }
 }
+
+export async function deleteQuote(_id: string) {
+  try {
+    const { data } = await axios.delete(
+      `${process.env.SERVER_URL}/quoter/delete`,
+      {
+        data: { _id },
+        headers: {
+          Authorization: cookies().get("session")?.value,
+        },
+      },
+    );
+    return data;
+  } catch (e) {
+    console.error("Error al eliminar cotizacion", e);
+    return null;
+  }
+}
