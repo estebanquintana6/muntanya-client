@@ -1,12 +1,12 @@
 "use client";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Scrollbar } from "swiper/modules";
-
+import { Scrollbar, Navigation } from "swiper/modules";
 import { BlogEntry } from "@/app/utils/interfaces/blogEntry";
 
 import "swiper/css";
 import "swiper/css/pagination";
+import 'swiper/css/navigation';
 
 interface OwnProps {
   blogEntry: BlogEntry;
@@ -39,10 +39,11 @@ export default function BlogEntryPage({ blogEntry }: OwnProps) {
       <div className="overflow-y-scroll flex flex-col px-6 sm:pr-24">
         {photo_urls.length > 1 ? (
           <Swiper
+            navigation={true}
             slidesPerView={"auto"}
             spaceBetween={10}
             scrollbar={{ draggable: true }}
-            modules={[Scrollbar]}
+            modules={[Scrollbar, Navigation]}
             pagination={{
               clickable: true,
             }}

@@ -68,3 +68,11 @@
 .swiper-slide.blog-swiper-slide {
   width: auto !important;
 }
+
+.swiper-button-next {
+  color: #7E9CF0 !important;
+}
+
+.swiper-button-prev {
+  color: #7E9CF0 !important;
+}

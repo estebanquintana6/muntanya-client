@@ -1,15 +1,17 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Scrollbar } from "swiper/modules";
+import { Scrollbar, Navigation } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/scrollbar";
+import 'swiper/css/navigation';
 
 export default function ProjectSwiper() {
   return (
     <div className="max-w-6xl mx-[1.5em] md:mx-auto mt-8 sm:mt-0 sm:w-2/3">
       <Swiper
-        modules={[Scrollbar]}
+        modules={[Scrollbar, Navigation]}
         loop={false}
+        navigation={true}
         pagination={{ clickable: true }}
         scrollbar={{ draggable: true }}
         centeredSlides={false}
