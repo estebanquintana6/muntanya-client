@@ -3,7 +3,7 @@ import { Scrollbar, Navigation } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/scrollbar";
-import 'swiper/css/navigation';
+import "swiper/css/navigation";
 
 export default function ProjectSwiper() {
   return (
@@ -39,27 +39,53 @@ export default function ProjectSwiper() {
           <div className="relative cursor-pointer rounded-md">
             <img
               src="/photos/wrap.jpg"
-              className="absolute h-full hover:ease-in-out rounded-md transition duration-700 hover:opacity-0 top-0 hidden md:block"
+              className="absolute z-10 h-full hover:ease-in-out rounded-md transition duration-700 hover:opacity-0 top-0 hidden md:block"
             />
-            <img src="/photos/FORAS-1.jpg" className="rounded-md" />
+            <div className="relative rounded-md">
+              <div className="absolute flex flex-col top-0 bg-black bg-opacity-50 h-full w-full rounded-md py-12 px-8 md:px-2">
+                <h1 className="text-primary font-zodiak-light text-4xl text-center mt-auto md:text-3xl">
+                  MISIÓN
+                </h1>
+                <p className="text-primary text-lg font-zodiak-regular text-center mb-auto md:text-sm">
+                  Revolucionar la produccción industrial adaptando sistemas
+                  circulares que respeten y emulen ciclos naturales
+                </p>
+              </div>
+              <img src="/photos/FORAS-1.jpg" className="rounded-md" />
+            </div>
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div className="relative cursor-pointer rounded-md h-full">
             <img
               src="/photos/wrap.jpg"
-              className="absolute h-full hover:ease-in-out rounded-md transition duration-700 hover:opacity-0 top-0 hidden md:block"
+              className="absolute z-10 h-full hover:ease-in-out rounded-md transition duration-700 hover:opacity-0 top-0 hidden md:block"
             />
-            <img src="/photos/FORAS-2.jpg" className="rounded-md" />
+            <div className="relative rounded-md">
+              <div className="absolute flex flex-col top-0 bg-black bg-opacity-50 h-full w-full rounded-md py-12 px-8 md:px-2">
+                <h1 className="text-primary font-zodiak-light text-4xl text-center mt-auto md:text-3xl">
+                  VISIÓN
+                </h1>
+                <p className="text-primary text-lg font-zodiak-regular text-center mb-auto md:text-sm">
+                  Ser líderes en soluciones de diseño (industrial, grafico y de
+                  interiores) que transformen los residuos industriales en
+                  productos sostenibles de alto valor.
+                </p>
+              </div>
+              <img src="/photos/FORAS-2.jpg" className="rounded-md" />
+            </div>
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div className="relative cursor-pointer rounded-md">
             <img
               src="/photos/wrap.jpg"
-              className="absolute h-full hover:ease-in-out rounded-md transition duration-700 hover:opacity-0 top-0 hidden md:block"
+              className="absolute z-10 h-full hover:ease-in-out rounded-md transition duration-700 hover:opacity-0 top-0 hidden md:block"
             />
-            <img src="/photos/FORAS-4.jpg" className="rounded-md" />
+            <div className="relative rounded-md">
+              <div className="absolute flex flex-col top-0 bg-black bg-opacity-50 h-full w-full rounded-md py-12"></div>
+              <img src="/photos/FORAS-4.jpg" className="rounded-md" />
+            </div>
           </div>
         </SwiperSlide>
       </Swiper>
