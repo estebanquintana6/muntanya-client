@@ -3,8 +3,11 @@ import { User } from "@/app/utils/interfaces/user";
 import { useEffect, useState } from "react";
 import { deleteWarningModal } from "@/app/utils/alerts";
 
+import CreateUserBtn from "./CreateUserBtn";
+
 interface OwnProps {
   currentUser: string;
+  isSuperAdmin: boolean;
   getUsers: () => Promise<User[]>;
   deleteUser: (id: string) => Promise<void>;
 }
@@ -19,6 +22,7 @@ export default function UsersList({
   getUsers,
   deleteUser,
   currentUser,
+  isSuperAdmin,
 }: OwnProps) {
   const [users, setUsers] = useState<User[]>([]);
 
@@ -43,8 +47,6 @@ export default function UsersList({
     });
   };
 
-  const handleViewUser = (id: string) => {};
-
   return (
     <div className="w-full sm:w-[70vw] mx-auto my-10 bg-white p-8 rounded-xl shadow shadow-slate-300">
       <div className="flex flex-row justify-between items-center">
@@ -52,10 +54,15 @@ export default function UsersList({
           <h1 className="text-3xl font-medium">Lista de usuarios</h1>
         </div>
       </div>
-      <p className="text-slate-500">
+      <p className="text-slate-500 mt-4">
         Estos son los administradores de la página
       </p>
 
+      {isSuperAdmin && (
+        <div className="flex flex-row-reverse mx-4">
+          <CreateUserBtn refreshUsers={fetchData} />
+        </div>
+      )}
       <div id="tasks" className="my-5">
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
           <table className="w-full text-sm text-left rtl:text-right text-gray-500">

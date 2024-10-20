@@ -18,6 +18,7 @@ export default async function UsersPanel() {
   return (
     <div>
       <UsersList
+        isSuperAdmin={session.role === 'SUPERADMIN'}
         currentUser={session.username}
         getUsers={fetchUsers}
         deleteUser={handleDeleteUser}
