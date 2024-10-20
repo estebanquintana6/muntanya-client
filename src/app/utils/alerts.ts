@@ -42,9 +42,12 @@ export const deleteWarningModal = ({
       } else {
         cancelCb && (await cancelCb());
       }
+      return isConfirmed;
     })
-    .then(() => {
-      successModal(`La acción se ha realizado`);
+    .then((isConfirmed) => {
+      if (isConfirmed) {
+        successModal(`La acción se ha realizado`);
+      }
     })
     .catch(() => {
       errorModal("El producto no se pudo eliminar");
