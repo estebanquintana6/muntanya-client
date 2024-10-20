@@ -1,7 +1,5 @@
+import { redirect } from "next/navigation";
+
 export default async function AdminPanel() {
-  return (
-    <div>
-        <h2>Admin</h2>
-    </div>
-  );
+  redirect("/admin/proyectos");
 }
