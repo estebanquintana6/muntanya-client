@@ -49,11 +49,11 @@ export default function UsersList({
     <div className="w-full sm:w-[70vw] mx-auto my-10 bg-white p-8 rounded-xl shadow shadow-slate-300">
       <div className="flex flex-row justify-between items-center">
         <div>
-          <h1 className="text-3xl font-medium">Lista de contactos</h1>
+          <h1 className="text-3xl font-medium">Lista de usuarios</h1>
         </div>
       </div>
       <p className="text-slate-500">
-        Estas son tus últimas solicitudes de cotización
+        Estos son los administradores de la página
       </p>
 
       <div id="tasks" className="my-5">
