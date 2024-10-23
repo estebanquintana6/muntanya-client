@@ -26,7 +26,7 @@ export async function deleteUser(_id: string) {
       const { data } = await axios.delete(
         `${process.env.SERVER_URL}/users/delete`,
         {
-          data: { _id },
+          data: { id: _id },
           headers: {
             Authorization: cookies().get("session")?.value,
           },
