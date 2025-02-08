@@ -44,8 +44,8 @@ const BlogSwiper = ({ blogEntries }: OwnProps) => {
         className="breakpoint"
       >
         {blogEntries.map((blogEntry) => (
-          <SwiperSlide>
-            <BlogComponent blogEntry={blogEntry} key={blogEntry._id} />
+          <SwiperSlide key={blogEntry._id}>
+            <BlogComponent blogEntry={blogEntry}/>
           </SwiperSlide>
         ))}
       </Swiper>
