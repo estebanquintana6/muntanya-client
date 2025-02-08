@@ -10,7 +10,8 @@ const config: Config = {
   theme: {
     colors: {
       ...colors,
-      "primary": "#F3EDDC",
+      "primary": "#F8F8F8",
+      "secondary": "#F5F1E6",
       "brown-100": "#482E1D",
       "brown-50": "#895D2B",
       "brown-25": "#A3966A",
