@@ -25,7 +25,7 @@ export default function BlogSection({ fetchRecentBlogEntries } : OwnProps) {
       <div className="text-3xl text-left font-zodiak-light uppercase mb-10 text-brown-100 border-b-2 border-brown-100">
         Blog
       </div>
-      <div className="flex pl-8 flex-col lg:mr-auto justify-center border-l-8 border-brown-100 text-brown-100 lg:w-1/3">
+      <div className="flex sm:pl-8 flex-col lg:mr-auto justify-center sm:border-l-8 border-brown-100 text-brown-100 lg:w-1/3">
           <div className="text-left break-words w-full justify-center my-auto">
             <h4 className="text-lg sm:text-xl pb-2 sm:pb-4 font-zodiak-bold text-brown-100">
               Encuentra un mundo de contenidos

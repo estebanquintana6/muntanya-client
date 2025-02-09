@@ -1,28 +1,27 @@
 "use client";
 
-import Link from "next/link";
 import { BlogEntry } from "../utils/interfaces/blogEntry";
 import RecentBlogEntry from "./RecentBlogEntry";
 import BlogEntryGrid from "./BlogEntryGrid";
+
+import BlogSwiper from "../landing/Blog/BlogSwiper";
 
 interface OwnProps {
   blogEntries: BlogEntry[];
 }
 
 export default function BlogGallery({ blogEntries }: OwnProps) {
-  const [mostRecent, ...rest] = blogEntries;
+  const recentEntries = blogEntries.slice(0, 4);
 
-  const entryGridEntries = rest.slice(0, 4);
-
-  //const olderEntries = rest.slice(4, rest.length - 1);
+  const olderEntries = blogEntries.slice(4, blogEntries.length - 1);
 
   return (
-    <section className="grid grid-cols-2 gap-8 w-full px-4 sm:px-12 pb-12">
-      <div className="col-span-2 md:col-span-1 sm:py-12">
-        <RecentBlogEntry blogEntry={mostRecent} />
+    <section className="w-full px-4 sm:px-12 pb-12">
+      <div className="sm:py-12">
+        <BlogSwiper blogEntries={recentEntries} />
       </div>
-      <div className="col-span-2 md:col-span-1 sm:py-12">
-        <BlogEntryGrid blogEntries={entryGridEntries} />
+      <div className="sm:py-12">
+        <BlogEntryGrid blogEntries={olderEntries} />
       </div>
     </section>
   );

@@ -10,7 +10,7 @@ export default function BlogComponent({ blogEntry }: OwnProps) {
   return (
     <div className="h-[28rem] sm:h-[32rem] flex flex-col">
       <div className="relative flex flex-col items-start justify-end h-full col-span-12 overflow-hidden rounded-xl group md:col-span-6 xl:col-span-4 bg-blog-default-1 bg-cover">
-        <div className="absolute top-5 left-5 z-20 bg-primary bg-opacity-40 p-2">
+        <div className="absolute top-5 left-5 z-20 bg-primary bg-opacity-40 p-2 rounded-lg">
           <p className="font-zodiak-light text-primary text-xs">
             {tags[0] ?? ''}
           </p>
