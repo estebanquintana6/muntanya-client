@@ -37,7 +37,7 @@ export default function ProjectsSection({ favorites }: OwnProps) {
         </div>
         <ProjectSwiper />
       </div>
-      <div className="px-10 mt-8 sm:px-16">
+      <div className="px-10 mt-8 sm:px-32">
         {favorites.map(
           ({ _id, title, subtitle, description, photo_urls }, index) => (
             <div
