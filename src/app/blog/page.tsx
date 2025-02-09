@@ -9,8 +9,8 @@ export default async function BlogPage() {
   return (
     <main className="flex flex-col min-h-screen bg-primary pt-12">
       <Navbar />
-      <div className="py-10 mx-auto sm:mx-0 sm:py-12 sm:px-12">
-        <h1 className="text-5xl smd:text-6xl lg:text-8xl font-zodiak-light text-brown-100 border-b-2 border-brown-100">
+      <div className="py-10 px-8 mx-0 sm:pb-4 sm:pt-12 sm:px-12">
+        <h1 className="text-4xl border-b-2 border-brown-100 pb-4 sm:text-5xl lg:text-6xl font-zodiak-light text-brown-100">
           BLOG
         </h1>
       </div>
