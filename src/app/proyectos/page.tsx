@@ -13,8 +13,8 @@ export default async function Proyectos() {
     <>
       <main className="flex flex-col min-h-screen bg-brown-100 pt-12">
         <Navbar variant="dark" />
-        <div className="py-10 sm:py-20 mx-auto">
-          <h1 className="text-5xl smd:text-6xl lg:text-8xl font-zodiak-light text-primary">
+        <div className="py-4 mx-auto sm:py-8 sm:mx-48 border-b-2 border-primary">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-zodiak-light text-primary">
             PRODUCTOS
           </h1>
         </div>

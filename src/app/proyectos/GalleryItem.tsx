@@ -15,7 +15,7 @@ export default function GalleryItem({ product }: OwnProps) {
   const { _id, title, photo_urls, tags = [], description } = product;
 
   return (
-    <article className="col-span-1 p-4 sm:p-0 w-full sm:w-[25vw]">
+    <article className="col-span-1 p-4 sm:p-0 w-full overflow-hidden sm:w-[25vw]">
       <div
         ref={imgRef}
         className={`transition-opacity ease-in duration-700 ${isVisible ? "opacity-100" : "opacity-0"}`}
